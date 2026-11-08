@@ -16,7 +16,7 @@ async function hkdf(salt, ikm, info, bytes) {
   return new Uint8Array(await crypto.subtle.deriveBits({ name: 'HKDF', hash: 'SHA-256', salt, info }, key, bytes * 8));
 }
 
-async function encrypt(sub, payload) {
+export async function encrypt(sub, payload) {
   const uaPublic = fromB64url(sub.p256dh);
   const authSecret = fromB64url(sub.auth);
   const local = await crypto.subtle.generateKey({ name: 'ECDH', namedCurve: 'P-256' }, true, ['deriveBits']);
