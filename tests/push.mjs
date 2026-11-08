@@ -29,7 +29,7 @@ try {
   console.log('ok  notification shown: ' + shown[0]);
 
   // A member's new request must notify Jim too.
-  const inv = await p.evaluate(async () => (await fetch('/api/admin/invite', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: 'Pat Pusher', email: 'pat.pusher@example.com' }) })).json());
+  const inv = await p.evaluate(async () => (await fetch('/api/admin/invite', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: 'Pat Pusher', email: 'delivered+push@resend.dev' }) })).json());
   const m = await (await browser.newContext()).newPage();
   await m.goto(inv.link);
   await m.getByLabel('New password').fill('member-test-password-1');
