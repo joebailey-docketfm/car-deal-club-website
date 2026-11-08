@@ -273,7 +273,7 @@ const routes = {
       subject: 'Your Car Deal Club membership',
       text: `Hello ${firstName(user.name)},\n\nJim has set up your Car Deal Club member account. Use this link to choose your password:\n\n${link}\n\nThe link works once and expires in 7 days. After that, log in at ${origin}/#/login with ${email}.\n\nCar Deal Club\n`,
     });
-    return json({ ok: true, sent, link: sent ? null : link });
+    return json({ ok: true, sent, link });
   },
 
   // Push subscriptions for Jim's phone
@@ -336,7 +336,8 @@ export async function onRequest(context) {
   const user = await currentUser(env, request);
   const admin = user && user.role === 'admin' ? user : null;
   try {
-    return await found.handler({ env, request, body, user, admin, params: found.params, origin: url.origin, ctx: context });
+    // Links in emails point at the main site, even when a request came in on the bare domain.
+    return await found.handler({ env, request, body, user, admin, params: found.params, origin: env.SITE_URL || url.origin, ctx: context });
   } catch (e) {
     console.error(e);
     return fail('server', 500);

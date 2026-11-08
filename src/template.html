@@ -1058,6 +1058,8 @@ class Component extends DCLogic {
   setters = {};
   set(k) { if (!this.setters[k]) this.setters[k] = (e) => this.setState({ [k]: e.target.value }); return this.setters[k]; }
   componentDidMount() {
+    // The admin lives at /admin/ so a phone can add it to the home screen with its own manifest.
+    if (location.pathname === '/' && /^#\/admin/.test(location.hash)) return location.replace('/admin/' + location.hash);
     // The phone home-screen app opens at /admin/; send it to the admin requests page.
     if (/^\/admin\/?/.test(location.pathname) && !/^#\/(admin|forgot|set-password)/.test(location.hash)) history.replaceState(null, '', location.pathname + '#/admin');
     this.onHash = () => {
@@ -1206,7 +1208,7 @@ class Component extends DCLogic {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return this.setState({ ivErr: 'Enter a valid email address.', ivSent: '', ivLink: '' });
     this.setState({ ivErr: '', ivSent: '', ivLink: '', ivBusy: true, ivCopied: false });
     this.api('POST', 'admin/invite', { name, email }).then(j => {
-      this.setState({ ivBusy: false, ivName: '', ivEmail: '', ivFor: name.split(' ')[0], ivSent: j.sent ? 'Invite sent to ' + email + '.' : '', ivLink: j.link || '' });
+      this.setState({ ivBusy: false, ivName: '', ivEmail: '', ivFor: name.split(' ')[0], ivSent: j.sent ? 'Invite sent to ' + email + '.' : '', ivLink: j.sent ? '' : j.link });
       this.loadFor('admin-members');
     }).catch(err => this.setState({ ivBusy: false, ivErr: err.message === 'admin' ? 'That is the admin account.' : 'That didn’t go through. Please try again.' }));
   };
@@ -1384,7 +1386,7 @@ class Component extends DCLogic {
       markWorking: () => aselR && jimReply(aselR, 'Thanks ' + who(aselR).name.split(' ')[0] + ', I am on it. I will come back to you here as soon as I have an answer.', 'working'),
       adAnswered: s.adAnswered, toggleAnswered: () => this.setState({ adAnswered: !s.adAnswered }),
       adminSend: (e) => { e.preventDefault(); const t = s.adReply.trim(); if (!t || !aselR) return; this.setState({ adReply: '' }); jimReply(aselR, t, s.adAnswered ? 'answered' : 'working').catch(() => this.setState({ adReply: t })); },
-      memberCountLabel: activeCount + ' active members' + (invitedCount ? ' · ' + invitedCount + ' invited' : ''),
+      memberCountLabel: activeCount + (activeCount === 1 ? ' active member' : ' active members') + (invitedCount ? ' · ' + invitedCount + ' invited' : ''),
       adminMembers,
       ivErr: s.ivErr, ivSent: s.ivSent, ivLink: s.ivLink, ivFor: s.ivFor, sendInvite: this.sendInvite, ivLabel: s.ivBusy ? 'Sending…' : 'Send invite',
       ivCopyLabel: s.ivCopied ? 'Copied' : 'Copy link',

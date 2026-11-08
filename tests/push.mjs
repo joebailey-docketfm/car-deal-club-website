@@ -27,6 +27,24 @@ try {
   }
   if (!shown.length) throw new Error('No notification shown');
   console.log('ok  notification shown: ' + shown[0]);
+
+  // A member's new request must notify Jim too.
+  const inv = await p.evaluate(async () => (await fetch('/api/admin/invite', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: 'Pat Pusher', email: 'pat.pusher@example.com' }) })).json());
+  const m = await (await browser.newContext()).newPage();
+  await m.goto(inv.link);
+  await m.getByLabel('New password').fill('member-test-password-1');
+  await m.getByLabel('Type it again').fill('member-test-password-1');
+  await m.getByRole('button', { name: 'Save password and log in' }).click();
+  await m.getByLabel('Your question').fill('Can you find me a cheaper MOT near Leek?');
+  await m.getByRole('button', { name: 'Send to Jim' }).click();
+  await m.getByText('Sent to Jim').first().waitFor();
+  let got = null;
+  for (let i = 0; i < 20 && !got; i++) {
+    await p.waitForTimeout(1000);
+    got = (await p.evaluate(async () => (await (await navigator.serviceWorker.ready).getNotifications()).map((n) => n.title + ': ' + n.body))).find((t) => t.startsWith('New request from Pat Pusher'));
+  }
+  if (!got) throw new Error('No notification for the member request');
+  console.log('ok  request notification shown: ' + got);
   console.log('PASS');
 } catch (e) {
   console.log('FAIL ' + e.message.split('\n')[0]);

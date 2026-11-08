@@ -23,6 +23,7 @@ database_id = "f004dd02-31cd-4338-9207-177a3cf413d7"
 migrations_dir = "migrations"
 
 [env.production.vars]
+SITE_URL = "https://www.cardealclub.co.uk"
 ADMIN_EMAIL = "james_dean1@sky.com"
 VAPID_PUBLIC = "BOjAgwHU2zumrIbmEj6D1iFslqLlVVjOskOWfnpbUe1pevt396ABXNpm9e3s-gxDvGsvQu3SoYMW4yCfRtj9MHM"
 
