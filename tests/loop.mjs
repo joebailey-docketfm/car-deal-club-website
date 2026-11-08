@@ -23,7 +23,7 @@ try {
   const a = await jim.newPage(); watch(a, 'jim');
   if (adminLink.startsWith('login:')) {
     await a.goto(base + '/admin/#/admin');
-    await a.getByLabel('Email address').fill('james_dean1@sky.com');
+    await a.getByLabel('Email address').fill(process.env.TEST_ADMIN_EMAIL || 'delivered+admin@resend.dev');
     await a.getByLabel('Password').fill(adminLink.slice(6));
     await a.getByRole('button', { name: 'Log in' }).click();
   } else {

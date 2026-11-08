@@ -21,6 +21,8 @@ export async function sendEmail(env, { to, subject, text }) {
         text,
       }),
     });
+    // Logged without the address, so `wrangler pages deployment tail` shows what was sent.
+    console.log('email', res.status, subject, res.ok ? (await res.json()).id : await res.text());
     return res.ok;
   } catch {
     return false;

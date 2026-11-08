@@ -9,7 +9,7 @@ const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } })
 const p = await ctx.newPage();
 try {
   await p.goto(base + '/admin/#/admin');
-  await p.getByLabel('Email address').fill('james_dean1@sky.com');
+  await p.getByLabel('Email address').fill(process.env.TEST_ADMIN_EMAIL || 'delivered+admin@resend.dev');
   await p.getByLabel('Password').fill(password);
   await p.getByRole('button', { name: 'Log in' }).click();
   await p.getByRole('heading', { name: 'Member requests' }).waitFor();

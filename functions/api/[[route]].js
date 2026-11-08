@@ -90,11 +90,13 @@ async function loadRequests(env, where, bind) {
 }
 
 // Tells Jim about a new request or a member's reply: push to his phone, email as the backup.
+// Goes to every admin account, which in practice is Jim's.
 async function tellJim(env, origin, { title, body, id }) {
   const url = '/admin/#/admin/' + id;
+  const { results: admins } = await env.DB.prepare("SELECT email FROM users WHERE role = 'admin'").all();
   await Promise.all([
     pushToAdmins(env, { title, body: body.slice(0, 180), url }),
-    sendEmail(env, { to: env.ADMIN_EMAIL, subject: title, text: `${title}\n\n${body}\n\nOpen it in your admin: ${origin}${url}\n` }),
+    ...admins.map((a) => sendEmail(env, { to: a.email, subject: title, text: `${title}\n\n${body}\n\nOpen it in your admin: ${origin}${url}\n` })),
   ]);
 }
 
@@ -302,7 +304,7 @@ const routes = {
   'GET admin/status': async ({ env, admin }) => {
     if (!admin) return fail('login', 401);
     const subs = await env.DB.prepare('SELECT COUNT(*) AS n FROM push_subs WHERE user_id = ?').bind(admin.id).first();
-    return json({ ok: true, email: canEmail(env, env.ADMIN_EMAIL), push: !!env.VAPID_PRIVATE_JWK, devices: subs.n });
+    return json({ ok: true, email: canEmail(env, admin.email), push: !!env.VAPID_PRIVATE_JWK, devices: subs.n });
   },
 };
 
