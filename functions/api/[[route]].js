@@ -14,8 +14,9 @@ const json = (data, status = 200, headers = {}) =>
 const fail = (error, status = 400) => json({ ok: false, error }, status);
 const clean = (v, max) => String(v ?? '').trim().slice(0, max);
 
+// Without a Max-Age the browser drops the cookie when it closes.
 function cookie(token, maxAgeSec) {
-  return `${COOKIE}=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAgeSec}`;
+  return `${COOKIE}=${token}; Path=/; HttpOnly; Secure; SameSite=Lax` + (maxAgeSec === null ? '' : `; Max-Age=${maxAgeSec}`);
 }
 
 function readCookie(request) {
@@ -31,11 +32,12 @@ async function currentUser(env, request) {
   ).bind(await sha256(token), Date.now()).first();
 }
 
-async function startSession(env, userId) {
+// remember: 30 days. Otherwise the cookie ends with the browser, and the server forgets it after a day.
+async function startSession(env, userId, remember = true) {
   const token = randomToken();
   await env.DB.prepare('INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)')
-    .bind(await sha256(token), userId, Date.now() + SESSION_DAYS * DAY).run();
-  return cookie(token, SESSION_DAYS * 86400);
+    .bind(await sha256(token), userId, Date.now() + (remember ? SESSION_DAYS * DAY : DAY)).run();
+  return cookie(token, remember ? SESSION_DAYS * 86400 : null);
 }
 
 // Fixed-window rate limit kept in D1. Returns true when the key is over its limit.
@@ -112,7 +114,8 @@ const routes = {
       return fail('wrong', 401);
     }
     await clearHits(env, kEmail);
-    return json({ ok: true, role: user.role }, 200, { 'Set-Cookie': await startSession(env, user.id) });
+    // Jim's admin login has no tick box, so it always remembers him.
+    return json({ ok: true, role: user.role }, 200, { 'Set-Cookie': await startSession(env, user.id, !!body.admin || body.remember === true) });
   },
 
   'POST logout': async ({ env, request }) => {

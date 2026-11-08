@@ -363,6 +363,8 @@ html{scroll-behavior:smooth;}
 a{color:#0a2d55;}
 a:hover{color:#3fae1f;}
 input::placeholder{color:#8a99ad;}
+/* iPhones zoom in on any box with text under 16px, so phones get 16px. Desktop stays as drawn. */
+@media (max-width:640px){input,select,textarea{font-size:16px !important;}}
 </style>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" sc-camel-view-box="0 0 100 100"><rect width="100" height="100" fill="#0B0B0C"></rect><text x="50" y="62" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="34" fill="#FFFFFF">CDC</text></svg></template>
@@ -705,6 +707,10 @@ input::placeholder{color:#8a99ad;}
     <h1 style="margin:0;font-size:clamp(24px,3vw,30px);font-weight:900;letter-spacing:-0.02em;">Member login</h1>
     <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Email address</span><input type="email" sc-camel-auto-complete="email" value="{{ loginEmail }}" sc-camel-on-change="{{ set_loginEmail }}" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
     <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Password</span><input type="password" sc-camel-auto-complete="current-password" value="{{ loginPw }}" sc-camel-on-change="{{ set_loginPw }}" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
+    <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer;">
+      <input type="checkbox" checked="{{ loginRemember }}" sc-camel-on-change="{{ toggleRemember }}" style="width:16px;height:16px;margin:0;accent-color:#0a2d55;">
+      <span>Remember me</span>
+    </label>
     <sc-if value="{{ loginErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px;font-weight:600;color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 12px;">{{ loginErr }}</div></sc-if>
     <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;border:0;border-radius:10px;background:#0a2d55;color:#fff;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;" style-hover="background:#123f74;color:#fff;">{{ loginLabel }}</button>
     <a href="#/forgot" style="font-size:14px;font-weight:600;color:#0a2d55;">Forgot your password?</a>
@@ -1054,7 +1060,7 @@ input::placeholder{color:#8a99ad;}
 class Component extends DCLogic {
   threadRef = React.createRef();
   adminThreadRef = React.createRef();
-  state = { me: null, ready: false, adminIn: false, adminEmail: '', adminPw: '', adminErr: '', adminBusy: false, adminFilter: 'open', adminSel: null, adReply: '', adAnswered: true, adminRequests: [], members: [], waitlist: [], ivName: '', ivEmail: '', ivErr: '', ivSent: '', ivLink: '', ivFor: '', ivBusy: false, ivCopied: false, pushState: 'unknown', pushMsg: '', backup: null, fgEmail: '', fgErr: '', fgDone: false, fgBusy: false, spToken: '', spInfo: null, spState: 'checking', spPw: '', spPw2: '', spErr: '', spBusy: false, loginBusy: false, deals: [], drafts: {}, ndTitle: '', ndSaving: '', ndPartner: '', ndCat: '', ndCode: '', ndErr: '', page: 'home', sub: '', member: null, loginEmail: '', loginPw: '', loginErr: '', joinName: '', joinEmail: '', joinPw: '', joinAgree: false, joinStep: 1, joinErr: '', wlDone: false, wlBusy: false, paying: false, justJoined: false, dealCat: 'All', dealId: null, redeemed: {}, copied: false, faqOpen: 0, cName: '', cEmail: '', cMsg: '', cErr: '', cSent: false, checks: [], aCar: '', aUrl: '', aPrice: '', aMiles: '', aNotes: '', aErr: '', guideOpen: 0, cancelAsk: false, cancelled: false, requests: [], curReq: null, rqText: '', rqCar: '', rqArea: '', rqErr: '', rpText: '', rqBusy: false };
+  state = { me: null, ready: false, adminIn: false, adminEmail: '', adminPw: '', adminErr: '', adminBusy: false, adminFilter: 'open', adminSel: null, adReply: '', adAnswered: true, adminRequests: [], members: [], waitlist: [], ivName: '', ivEmail: '', ivErr: '', ivSent: '', ivLink: '', ivFor: '', ivBusy: false, ivCopied: false, pushState: 'unknown', pushMsg: '', backup: null, fgEmail: '', fgErr: '', fgDone: false, fgBusy: false, spToken: '', spInfo: null, spState: 'checking', spPw: '', spPw2: '', spErr: '', spBusy: false, loginBusy: false, deals: [], drafts: {}, ndTitle: '', ndSaving: '', ndPartner: '', ndCat: '', ndCode: '', ndErr: '', page: 'home', sub: '', member: null, loginEmail: '', loginPw: '', loginRemember: false, loginErr: '', joinName: '', joinEmail: '', joinPw: '', joinAgree: false, joinStep: 1, joinErr: '', wlDone: false, wlBusy: false, paying: false, justJoined: false, dealCat: 'All', dealId: null, redeemed: {}, copied: false, faqOpen: 0, cName: '', cEmail: '', cMsg: '', cErr: '', cSent: false, checks: [], aCar: '', aUrl: '', aPrice: '', aMiles: '', aNotes: '', aErr: '', guideOpen: 0, cancelAsk: false, cancelled: false, requests: [], curReq: null, rqText: '', rqCar: '', rqArea: '', rqErr: '', rpText: '', rqBusy: false };
   setters = {};
   set(k) { if (!this.setters[k]) this.setters[k] = (e) => this.setState({ [k]: e.target.value }); return this.setters[k]; }
   componentDidMount() {
@@ -1173,7 +1179,7 @@ class Component extends DCLogic {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return this.setState({ loginErr: 'Enter the email address you joined with.' });
     if (!s.loginPw) return this.setState({ loginErr: 'Enter your password.' });
     this.setState({ loginErr: '', loginBusy: true });
-    this.api('POST', 'login', { email: em, password: s.loginPw }).then(j => { this.setState({ loginBusy: false }); return this.afterLogin(j.role); })
+    this.api('POST', 'login', { email: em, password: s.loginPw, remember: s.loginRemember }).then(j => { this.setState({ loginBusy: false }); return this.afterLogin(j.role); })
       .catch(err => this.setState({ loginBusy: false, loginErr: this.loginError(err) }));
   };
   adminLogin = (e) => {
@@ -1326,7 +1332,7 @@ class Component extends DCLogic {
       monthName: new Date().toLocaleDateString('en-GB', { month: 'long' }),
       welcomeEyebrow: s.justJoined ? 'WELCOME TO THE CLUB' : 'MEMBER DASHBOARD',
       logout: () => { this.api('POST', 'logout', {}).catch(() => {}).then(() => { this.setState({ me: null, member: null, adminIn: false, requests: [], curReq: null, cancelAsk: false, cancelled: false, justJoined: false }); this.go('home'); }); },
-      loginErr: s.loginErr, onLogin: this.onLogin, loginLabel: s.loginBusy ? 'Logging in…' : 'Log in',
+      loginErr: s.loginErr, onLogin: this.onLogin, loginRemember: s.loginRemember, toggleRemember: () => this.setState({ loginRemember: !s.loginRemember }), loginLabel: s.loginBusy ? 'Logging in…' : 'Log in',
       fgOpen: !s.fgDone, fgDone: s.fgDone, fgErr: s.fgErr, sendForgot: this.sendForgot, fgLabel: s.fgBusy ? 'Sending…' : 'Send me a link', fgBack: s.sub === 'admin' ? '#/admin' : '#/login',
       spChecking: s.spState === 'checking', spBad: s.spState === 'bad', spOk: s.spState === 'ok', spErr: s.spErr, setPassword: this.setPassword, spLabel: s.spBusy ? 'Saving…' : 'Save password and log in',
       spTitle: s.spInfo && s.spInfo.kind === 'reset' ? 'Choose a new password' : 'Set your password',

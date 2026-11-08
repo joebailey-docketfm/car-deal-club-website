@@ -82,7 +82,27 @@ try {
   await m.getByRole('button', { name: 'Log in' }).click();
   await m.getByText('New request for Jim').waitFor();
   await shot(m, 'phone-member-ask-jim-new');
-  step('Member logged in (wrong password refused first)');
+  const session = (await mem.cookies()).find((c) => c.name === 'cdc_session');
+  if (!session || session.expires !== -1) throw new Error('Unticked Remember me should give a browser-session cookie');
+  step('Member logged in (wrong password refused first), cookie ends with the browser');
+
+  // Remember me ticked: the login lasts 30 days.
+  const rem = await browser.newContext(DESKTOP);
+  const rp = await rem.newPage(); watch(rp, 'remember');
+  await rp.goto(base + '/#/login');
+  await rp.getByLabel('Email address').fill(memberEmail);
+  await rp.getByLabel('Password').fill(PW_MEMBER);
+  await rp.getByLabel('Remember me').check();
+  await shot(rp, 'desktop-member-login');
+  const deskSize = await rp.getByLabel('Email address').evaluate((el) => getComputedStyle(el).fontSize);
+  if (deskSize !== '15px') throw new Error('Desktop login box should stay 15px as drawn, got ' + deskSize);
+  await rp.getByRole('button', { name: 'Log in' }).click();
+  await rp.getByText('New request for Jim').waitFor();
+  const kept = (await rem.cookies()).find((c) => c.name === 'cdc_session');
+  const days = kept ? (kept.expires * 1000 - Date.now()) / 86400000 : 0;
+  if (days < 29 || days > 31) throw new Error('Ticked Remember me should last 30 days, got ' + days.toFixed(1));
+  await rem.close();
+  step('Remember me ticked keeps the login 30 days; desktop input text stays ' + deskSize);
 
   // Other member pages still say they open soon.
   await m.goto(base + '/#/dashboard');
@@ -158,6 +178,11 @@ try {
   await g.goto(base + '/#/login');
   await g.getByRole('heading', { name: 'Member login' }).waitFor();
   await shot(g, 'phone-guest-login');
+  const phoneSizes = await g.$$eval('input:not([type=checkbox]), textarea, select', (els) => els.map((el) => getComputedStyle(el).fontSize));
+  if (!phoneSizes.length || phoneSizes.some((s) => s !== '16px')) throw new Error('Phone inputs should be 16px, got ' + phoneSizes.join(','));
+  await ap.goto(base + '/admin/#/admin-members');
+  const adminPhoneSizes = await ap.$$eval('input:not([type=checkbox]), textarea', (els) => els.map((el) => getComputedStyle(el).fontSize));
+  if (adminPhoneSizes.some((s) => s !== '16px')) throw new Error('Admin phone inputs should be 16px, got ' + adminPhoneSizes.join(','));
   await g.goto(base + '/#/forgot');
   await g.getByLabel('Email address').fill(memberEmail);
   await g.getByRole('button', { name: 'Send me a link' }).click();
