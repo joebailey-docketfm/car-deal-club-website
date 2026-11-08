@@ -1,0 +1,14 @@
+{
+  "name": "car-deal-club-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && wrangler pages dev --port 8788",
+    "deploy:preview": "node scripts/build.mjs && wrangler pages deploy --branch preview --commit-dirty=true"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0",
+    "wrangler": "4.158.0"
+  }
+}

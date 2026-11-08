@@ -1,0 +1,53 @@
+# Cloudflare Pages project car-deal-club, in Jim's Cloudflare account.
+# This file is the source of truth for the project's bindings. Secrets
+# (RESEND_API_KEY, VAPID_PRIVATE_JWK) are set with `wrangler pages secret put`.
+name = "car-deal-club"
+compatibility_date = "2026-10-20"
+pages_build_output_dir = "public"
+
+# Top level is only used by `wrangler pages dev`. Production and preview have their own blocks below.
+[vars]
+ADMIN_EMAIL = "james_dean1@sky.com"
+VAPID_PUBLIC = "BOjAgwHU2zumrIbmEj6D1iFslqLlVVjOskOWfnpbUe1pevt396ABXNpm9e3s-gxDvGsvQu3SoYMW4yCfRtj9MHM"
+# Preview only sends email to these addresses. Anyone else gets a link shown to Jim instead.
+EMAIL_ALLOW = "delivered@resend.dev"
+
+[[kv_namespaces]]
+binding = "SIGNUPS"
+id = "2e330197704f4f26bea9ea81834755bf"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cdc-members-preview"
+database_id = "f004dd02-31cd-4338-9207-177a3cf413d7"
+migrations_dir = "migrations"
+
+[env.production.vars]
+ADMIN_EMAIL = "james_dean1@sky.com"
+VAPID_PUBLIC = "BOjAgwHU2zumrIbmEj6D1iFslqLlVVjOskOWfnpbUe1pevt396ABXNpm9e3s-gxDvGsvQu3SoYMW4yCfRtj9MHM"
+
+[[env.production.kv_namespaces]]
+binding = "SIGNUPS"
+id = "2e330197704f4f26bea9ea81834755bf"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "cdc-members"
+database_id = "65516877-1d06-45e3-be83-08124d1fab16"
+migrations_dir = "migrations"
+
+[env.preview.vars]
+ADMIN_EMAIL = "james_dean1@sky.com"
+VAPID_PUBLIC = "BOjAgwHU2zumrIbmEj6D1iFslqLlVVjOskOWfnpbUe1pevt396ABXNpm9e3s-gxDvGsvQu3SoYMW4yCfRtj9MHM"
+# Preview only sends email to these addresses. Anyone else gets a link shown to Jim instead.
+EMAIL_ALLOW = "james_dean1@sky.com,delivered@resend.dev"
+
+[[env.preview.kv_namespaces]]
+binding = "SIGNUPS"
+id = "2e330197704f4f26bea9ea81834755bf"
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "cdc-members-preview"
+database_id = "f004dd02-31cd-4338-9207-177a3cf413d7"
+migrations_dir = "migrations"

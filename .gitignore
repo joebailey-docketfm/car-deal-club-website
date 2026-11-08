@@ -4,3 +4,5 @@ node_modules/
 *.log
 test-results/
 playwright-report/
+public/
+test-results/
