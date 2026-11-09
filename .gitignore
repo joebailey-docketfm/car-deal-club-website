@@ -6,3 +6,10 @@ test-results/
 playwright-report/
 public/
 test-results/
+
+# Secrets and build output (never commit)
+.env
+.env.*
+!.env.example
+dist/
+.next/
