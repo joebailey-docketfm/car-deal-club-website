@@ -390,7 +390,7 @@ input::placeholder{color:#8a99ad;}
       <sc-if value="{{ adminIn }}" hint-placeholder-val="{{ false }}"><nav style="display:flex;flex-wrap:wrap;gap:6px 24px;font-size:14px;font-weight:600;"><sc-for list="{{ adminNav }}" as="n" hint-placeholder-count="4"><a href="{{ n.href }}" style="display:flex;gap:6px;align-items:center;text-decoration:none;color:{{ n.color }};border-bottom:2px solid {{ n.border }};padding:6px 0;" style-hover="color:#55d630;"><span>{{ n.label }}</span><sc-if value="{{ n.count }}" hint-placeholder-val="{{ false }}"><span style="background:#e0a100;color:#061a33;border-radius:999px;padding:1px 7px;font-size:11px;font-weight:800;">{{ n.count }}</span></sc-if></a></sc-for></nav></sc-if>
       <div style="display:flex;gap:12px;align-items:center;font-size:13px;">
         <a href="#/home" style="color:#c9d6e6;font-weight:600;" style-hover="color:#fff;">View website</a>
-        <sc-if value="{{ adminIn }}" hint-placeholder-val="{{ false }}"><span style="color:#c9d6e6;">Signed in as Jim</span><button type="button" sc-camel-on-click="{{ adminLogout }}" style="background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:7px 12px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;">Log out</button></sc-if>
+        <sc-if value="{{ adminIn }}" hint-placeholder-val="{{ false }}"><span style="color:#c9d6e6;">Signed in as John</span><button type="button" sc-camel-on-click="{{ adminLogout }}" style="background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;border-radius:8px;padding:7px 12px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;">Log out</button></sc-if>
       </div>
     </div>
   </header>
@@ -398,7 +398,7 @@ input::placeholder{color:#8a99ad;}
   <sc-if value="{{ showMemberHeader }}" hint-placeholder-val="{{ false }}">
   <header data-screen-label="Member header" style="position:sticky;top:0;z-index:1100;background:#0a2d55;color:#fff;">
     <div style="max-width:1240px;margin:0 auto;padding:12px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px;">
-      <a href="#/ask-jim" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><span style="font-weight:900;font-size:22px;letter-spacing:-0.02em;white-space:nowrap;">Car Deal <span style="color:#55d630;">Club</span></span><span style="border:1px solid rgba(85,214,48,0.6);color:#55d630;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;">MEMBERS</span></a>
+      <a href="#/ask-john" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;"><span style="font-weight:900;font-size:22px;letter-spacing:-0.02em;white-space:nowrap;">Car Deal <span style="color:#55d630;">Club</span></span><span style="border:1px solid rgba(85,214,48,0.6);color:#55d630;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;letter-spacing:0.1em;">MEMBERS</span></a>
       <nav style="display:flex;flex-wrap:wrap;gap:6px clamp(14px,2.2vw,28px);font-size:14px;font-weight:600;"><sc-for list="{{ memberNav }}" as="n" hint-placeholder-count="6"><a href="{{ n.href }}" style="text-decoration:none;color:{{ n.color }};border-bottom:2px solid {{ n.border }};padding:6px 0;" style-hover="color:#55d630;">{{ n.label }}</a></sc-for></nav>
       <div style="display:flex;gap:12px;align-items:center;">
         <a href="#/account" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-size:14px;font-weight:600;"><span style="width:34px;height:34px;border-radius:50%;background:#55d630;color:#062010;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;">{{ memberInitials }}</span><span>{{ firstName }}</span></a>
@@ -430,7 +430,7 @@ input::placeholder{color:#8a99ad;}
         <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:clamp(24px,4vw,36px);flex:0 1 380px;min-width:0;box-shadow:0 20px 50px rgba(0,0,0,0.3);border:0;display:flex;flex-direction:column;gap:16px;color:#0a2d55;">
     <div style="align-self:flex-start;background:#eef9e9;color:#2a7d12;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:700;letter-spacing:0.08em;">COMING SOON</div>
     <div style="margin:0;font-size:clamp(24px,3vw,30px);font-weight:900;letter-spacing:-0.02em;">The members' area opens soon</div>
-    <div style="font-size:16px;line-height:1.6;color:#2c4566;text-wrap:pretty;">Logging in, Ask Jim, member savings and advert checks will be here when membership opens. Join the waiting list and Jim will let you know.</div>
+    <div style="font-size:16px;line-height:1.6;color:#2c4566;text-wrap:pretty;">Logging in, Ask John, member savings and advert checks will be here when membership opens. Join the waiting list and John will let you know.</div>
     <a href="#/join" style="display:inline-flex;align-items:center;justify-content:center;height:52px;text-decoration:none;background:#55d630;color:#062010;border-radius:10px;font-size:16px;font-weight:800;" style-hover="background:#6ee34a;color:#062010;">Join the waiting list</a>
   </div>
       </sc-if>
@@ -479,7 +479,7 @@ input::placeholder{color:#8a99ad;}
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="font-size:clamp(32px,4vw,48px);font-weight:900;line-height:1.05;letter-spacing:-0.02em;">Throughout ownership</div>
           <div style="font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:#dde6f0;max-width:600px;">When you need to spend money on your car, whether it’s a service, tyres or anything else car related, we’ll find a discount in your area through our dealer partners. Tell us what you need and we’ll do the work, putting you in touch with a local garage with a fantastic saving.</div>
-          <div style="font-size:clamp(17px,1.6vw,20px);font-weight:700;">Members can message Jim, our expert, directly.</div>
+          <div style="font-size:clamp(17px,1.6vw,20px);font-weight:700;">Members can message John, our expert, directly.</div>
         </div>
       </div>
       <a href="#/join" style="pointer-events:auto;display:flex;align-items:center;gap:10px;text-decoration:none;background:#fff;color:#3fae1f;border-radius:999px;padding:15px 26px;font-size:16px;font-weight:700;" style-hover="background:#eef9e9;color:#3fae1f;">
@@ -565,7 +565,7 @@ input::placeholder{color:#8a99ad;}
       </div>
 
       <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;">
-        <div style="font-size:22px;font-weight:800;">Member feedback</div>
+        <div style="font-size:22px;font-weight:800;">Member testimonies</div>
         <div style="font-size:15px;line-height:1.55;color:#2c4566;text-wrap:pretty;">With our members’ permission, we’ll share here how Car Deal Club has saved them money.</div>
       </div>
     </div>
@@ -584,8 +584,8 @@ input::placeholder{color:#8a99ad;}
   </section>
   <section data-screen-label="Small print" style="background:#f3f6fa;border-top:1px solid #e3e9f0;">
     <div style="max-width:1240px;margin:0 auto;padding:18px clamp(16px,4vw,40px) 22px;display:flex;flex-direction:column;gap:6px;font-size:12px;line-height:1.55;color:#5b6f8a;text-wrap:pretty;">
-      <p style="margin:0;">* Money back guarantee: if we can’t save you at least what you pay us, we’ll refund a full year’s subscription, or the total of your monthly subscription payments, up to a maximum of £59.88 (12 months’ payments).</p>
-      <p style="margin:0;">** Non-members can enter the monthly giveaway draw free of charge by sending us a request through the <a href="#/contact" style="color:#5b6f8a;">Contact</a> page.</p>
+      <p style="margin:0;">* Money back guarantee: if we can’t save you at least what you pay us, we’ll refund a full year’s subscription, or the total of your monthly subscription payments, up to a maximum of £59.88 (12 months’ payments). See our <a href="#/terms" style="color:#5b6f8a;">Terms</a>.</p>
+      <p style="margin:0;">** Non-members can enter the monthly giveaway draw free of charge by sending us a request through the <a href="#/contact" style="color:#5b6f8a;">Contact</a> page. Full rules in our <a href="#/terms" style="color:#5b6f8a;">Terms</a>.</p>
     </div>
   </section>
 
@@ -602,7 +602,7 @@ input::placeholder{color:#8a99ad;}
   </div>
   <div style="flex:1 1 320px;min-width:0;background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;">
     <div style="font-size:20px;font-weight:800;">What members get</div>
-    <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;font-weight:500;"><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Car advert checks by our experts</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Exclusive deals, offers and discounts</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Direct access to Jim, our expert</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Entry into the monthly prize draw</span></div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;font-weight:500;"><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Car advert checks by our experts</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Exclusive deals, offers and discounts</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Direct access to John, our expert</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Entry into the monthly prize draw</span></div></div>
     <a href="#/join" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;margin-top:6px;" style-hover="background:#6ee34a;color:#062010;"><span>Join for {{ priceLabel }}/month</span><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
   </div>
 </div></section></div></sc-if>
@@ -612,7 +612,7 @@ input::placeholder{color:#8a99ad;}
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;">
     <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:800;color:#3fae1f;letter-spacing:0.1em;">01</div><div style="font-size:20px;font-weight:800;">Check car adverts</div><div style="font-size:15px;line-height:1.6;color:#3c5373;">Send us any advert. We look at price, mileage, specification, potential red flags and finance, and give you negotiation points.</div></div>
     <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:800;color:#3fae1f;letter-spacing:0.1em;">02</div><div style="font-size:20px;font-weight:800;">Exclusive savings</div><div style="font-size:15px;line-height:1.6;color:#3c5373;">Member-only discounts negotiated with our partners: servicing, MOTs, tyres, valeting, parts and more.</div></div>
-    <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:800;color:#3fae1f;letter-spacing:0.1em;">03</div><div style="font-size:20px;font-weight:800;">Ask Jim, our expert</div><div style="font-size:15px;line-height:1.6;color:#3c5373;">Jim, our founder, is your personal contact. Ask him anything and he goes and finds the answer, contacting suppliers and negotiating for you.</div></div>
+    <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:800;color:#3fae1f;letter-spacing:0.1em;">03</div><div style="font-size:20px;font-weight:800;">Ask John, our expert</div><div style="font-size:15px;line-height:1.6;color:#3c5373;">John, our founder, is your personal contact. Ask him anything and he goes and finds the answer, contacting suppliers and negotiating for you.</div></div>
     <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:800;color:#3fae1f;letter-spacing:0.1em;">04</div><div style="font-size:20px;font-weight:800;">Monthly prize draw</div><div style="font-size:15px;line-height:1.6;color:#3c5373;">Every member is entered automatically. Prizes include experience tickets, service and MOT vouchers, detailing and fuel.</div></div>
   </div>
   <div style="background:#0a2d55;color:#fff;border-radius:14px;padding:clamp(24px,4vw,40px);display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between;">
@@ -620,7 +620,7 @@ input::placeholder{color:#8a99ad;}
       <div style="font-size:24px;font-weight:800;">How it works</div>
       <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;color:#dde6f0;">
         <div style="display:flex;gap:12px;"><span style="color:#55d630;font-weight:800;">1</span><span>Join for {{ priceLabel }} a month with a PayPal subscription.</span></div>
-        <div style="display:flex;gap:12px;"><span style="color:#55d630;font-weight:800;">2</span><span>Log in and ask Jim, browse savings or send an advert.</span></div>
+        <div style="display:flex;gap:12px;"><span style="color:#55d630;font-weight:800;">2</span><span>Log in and ask John, browse savings or send an advert.</span></div>
         <div style="display:flex;gap:12px;"><span style="color:#55d630;font-weight:800;">3</span><span>Use your member codes with our partners and save.</span></div>
       </div>
     </div>
@@ -655,7 +655,83 @@ input::placeholder{color:#8a99ad;}
   </sc-for>
 </div></section></div></sc-if>
 
-<sc-if value="{{ pContact }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Contact"><section style="background:#0a2d55;color:#fff;"><div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">CONTACT</div><h1 style="margin:0;font-size:clamp(30px,4.4vw,46px);font-weight:900;letter-spacing:-0.02em;line-height:1.08;text-wrap:balance;">Get in touch</h1><p style="margin:0;font-size:17px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Send us a message and we will reply by email. Members can message Jim directly once logged in.</p></div></section>
+<sc-if value="{{ pTerms }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Terms"><section style="background:#0a2d55;color:#fff;"><div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">TERMS</div><h1 style="margin:0;font-size:clamp(30px,4.4vw,46px);font-weight:900;letter-spacing:-0.02em;line-height:1.08;text-wrap:balance;">Membership terms</h1><p style="margin:0;font-size:17px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Last updated 17 November 2026. Please read these before you join.</p></div></section>
+<section><div style="max-width:860px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:12px;">
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">About us</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">These terms are between you and Car Deal Club Ltd, company number 17504431, registered in England and Wales. Our registered office is Unit 7-9, Azets, Macon Court, Herald Drive, Crewe, CW1 6EA. In these terms, “we”, “us” and “our” mean Car Deal Club Ltd.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">You can contact us through the <a href="#/contact">Contact</a> page or by emailing enquiries@cardealclub.co.uk. Members can also message John, our Customer Support Manager, from their account.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Who can join</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">You must be 18 or over and live in the UK. Membership is for one person. Please do not share your login with anyone else.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">What membership includes</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Membership gives you car advert checks, member savings and discounts through our dealer partners, support from our team through live chat, and entry into our monthly giveaway draw.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Our advice is guidance to help you make your own decisions. It is not a mechanical inspection of a vehicle, and we cannot guarantee the condition, history or value of any car. We do not give regulated financial advice. Always read the paperwork before you sign anything.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Savings and offers are provided by our dealer partners and other businesses. Their own terms apply to anything you buy from them, and offers can change or end. We will always tell you who is providing an offer.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Price and payment</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Membership costs £4.99 a month. You pay by a monthly PayPal subscription, which renews each month until you cancel. Payments appear on your statement as “Car Deal Club Ltd”.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">If a payment fails, PayPal will try again. If it still fails after those retries, your membership ends and your access to the members’ area closes.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">If we change the price, we will email you at least 30 days before the new price applies. You can cancel before then if you do not want to continue.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Cancelling</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">You can cancel at any time, either in your PayPal account or by contacting us. Your membership continues until the end of the month you have paid for, then stops. We do not refund part months, apart from the cases below.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Your 14-day right to cancel.</strong> Under the Consumer Contracts Regulations 2013, you can cancel within 14 days of first joining. As you can use the members’ area straight away, we will refund what you have paid less a fair amount for the days you were a member.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Money back guarantee</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We are confident membership will save you more than it costs. If, after 12 months of continuous paid membership, we have not saved you at least what you have paid us, we will refund a full year’s subscription, or the total of your monthly subscription payments, up to a maximum of £59.88 (12 months’ payments).</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">To claim, contact us within 30 days of your 12th monthly payment. John, our Customer Support Manager, will look at the savings you have made through Car Deal Club and reply within 14 days. Approved refunds are paid back through PayPal. You can make one claim for each 12 months of membership.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Monthly giveaway draw</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Every active member is entered into our monthly giveaway draw automatically. You do not need to do anything.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Free entry.</strong> You do not need to be a member or pay anything to enter. Send us a request through the <a href="#/contact">Contact</a> page with your name and email address, saying you would like to enter that month’s draw. One free entry per person per month. Requests must reach us by the last day of the month. Free entries have exactly the same chance of winning as member entries.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Entrants must be 18 or over and live in the UK. Staff of Car Deal Club Ltd and their households cannot enter.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We pick one entry at random in the first week of the following month. We email the lucky recipient, who has 14 days to reply. If we do not hear back, we draw again.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Giveaways are provided by our dealer partners. There is no cash alternative. If a giveaway becomes unavailable, we will offer one of similar or higher value.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We announce the lucky recipient’s first name and town on our website. If you would rather we did not, tell us when you reply.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Member testimonies</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We only publish what a member says about us, or how much we have saved them, if they have given us permission. We show your first name and town only.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Using the service fairly</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Please be polite to our team and partners and give us accurate information. We can suspend or end a membership that is used to abuse our team, mislead our partners or break the law. If we end your membership for any other reason, we will refund any month you have paid for but not used.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Our responsibility to you</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">If we break these terms, we are responsible for loss you suffer that was a foreseeable result of that. We are not responsible for business losses, as membership is for personal use only.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Nothing in these terms limits our liability for death or personal injury caused by our negligence, for fraud, or for anything else the law does not allow us to limit. Nothing in these terms affects your legal rights as a consumer.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Changes to these terms</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We may update these terms from time to time. If a change affects you, we will email you before it applies. The date at the top shows when they last changed.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Complaints and the law</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">If you are unhappy with anything, contact us and John will look into it. These terms are governed by the law of England and Wales. If you live in Scotland or Northern Ireland, you can also bring a claim in your local courts.</p>
+</div></section></div></sc-if>
+<sc-if value="{{ pPrivacy }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Privacy"><section style="background:#0a2d55;color:#fff;"><div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">PRIVACY</div><h1 style="margin:0;font-size:clamp(30px,4.4vw,46px);font-weight:900;letter-spacing:-0.02em;line-height:1.08;text-wrap:balance;">Privacy policy</h1><p style="margin:0;font-size:17px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Last updated 17 November 2026. How we look after your personal data.</p></div></section>
+<section><div style="max-width:860px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:12px;">
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Who we are</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Car Deal Club Ltd (company number 17504431, registered in England and Wales) is responsible for your personal data. Our registered office is Unit 7-9, Azets, Macon Court, Herald Drive, Crewe, CW1 6EA. For anything about your data, email enquiries@cardealclub.co.uk or use the <a href="#/contact">Contact</a> page.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">What we collect</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Waiting list:</strong> your name and email address.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Contact form:</strong> your name, email address and message.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Member account:</strong> your name, email address, a scrambled (hashed) version of your password that we cannot read, and when you joined.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Your requests:</strong> the questions you send us, car adverts and details you share, the area you are in, and our replies.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Payments:</strong> PayPal handles your payment. We do not see or store your card details. PayPal tells us your name, email address and whether your subscription is active.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;"><strong>Security:</strong> your IP address, kept for a short time to stop people repeatedly guessing passwords or sending spam.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Why we use it</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">To run your membership and answer your requests, as part of our contract with you.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">To reply to messages and keep the website secure, because we have a legitimate interest in doing so.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">To publish testimonies, and to email the waiting list when membership opens, because you have agreed to it. You can withdraw that at any time.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">To keep payment and accounting records, because the law requires it.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Who we share it with</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We never sell your data. We share it only with the companies that help us run the service: Cloudflare (website hosting and storage), Resend (sending our emails) and PayPal (payments).</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">When you ask us to find you a saving, we pass the details needed to the dealer partner or garage involved, such as your name and what you need. We tell you before we do.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Some of these companies may handle data outside the UK. Where they do, they use the safeguards UK law requires.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">How long we keep it</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Waiting list details: until membership opens and we have told you, or sooner if you ask.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Contact form messages: 12 months.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Member account and requests: while you are a member, then 2 years after you leave, in case you have a question or rejoin.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Payment records: 6 years, as the law requires.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">Security records: removed automatically, usually within a day.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Your rights</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">You can ask us for a copy of your data, to correct it, to delete it, to limit how we use it, or to object to how we use it. You can also ask for a copy to take elsewhere. Just contact us, and we will reply within one month.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">If you are unhappy with how we have used your data, please tell us first. You can also complain to the Information Commissioner’s Office at ico.org.uk or on 0303 123 1113.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Cookies</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We use one cookie, and only when you log in. It keeps you logged in and is essential for the members’ area to work. The website also saves a few settings in your browser so pages load as you left them.</p>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">We do not use advertising or tracking cookies.</p>
+  <h2 style="margin:12px 0 0;font-size:20px;font-weight:800;">Changes to this policy</h2>
+  <p style="margin:0;font-size:15px;line-height:1.7;color:#2c4566;text-wrap:pretty;">If we change how we use your data, we will update this page and change the date at the top. If the change is significant, we will email members.</p>
+</div></section></div></sc-if>
+
+<sc-if value="{{ pContact }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Contact"><section style="background:#0a2d55;color:#fff;"><div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:12px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">CONTACT</div><h1 style="margin:0;font-size:clamp(30px,4.4vw,46px);font-weight:900;letter-spacing:-0.02em;line-height:1.08;text-wrap:balance;">Get in touch</h1><p style="margin:0;font-size:17px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Send us a message and we will reply by email. Members can message John directly once logged in.</p></div></section>
 <section><div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,4vw,40px);max-width:760px;">
   <sc-if value="{{ contactOpen }}" hint-placeholder-val="{{ true }}">
     <form sc-camel-on-submit="{{ sendContact }}" style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:16px;">
@@ -678,18 +754,18 @@ input::placeholder{color:#8a99ad;}
     <sc-if value="{{ wlOpen }}" hint-placeholder-val="{{ true }}">
       <form sc-camel-on-submit="{{ joinWaitlist }}" style="display:flex;flex-direction:column;gap:16px;">
         <h1 style="margin:0;font-size:clamp(26px,3.4vw,34px);font-weight:900;letter-spacing:-0.02em;">Join the waiting list</h1>
-        <p style="margin:0;font-size:16px;line-height:1.65;color:#2c4566;text-wrap:pretty;">Membership opens soon. Leave your details and Jim will be in touch as soon as you can join.</p>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#2c4566;text-wrap:pretty;">Membership opens soon. Leave your details and John will be in touch as soon as you can join.</p>
         <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Full name</span><input type="text" value="{{ joinName }}" sc-camel-on-change="{{ set_joinName }}" placeholder="First and last name" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
         <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Email address</span><input type="email" value="{{ joinEmail }}" sc-camel-on-change="{{ set_joinEmail }}" placeholder="you@example.com" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
         <sc-if value="{{ joinErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px;font-weight:600;color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 12px;">{{ joinErr }}</div></sc-if>
         <button type="submit" disabled="{{ wlBusy }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;" style-hover="background:#6ee34a;color:#062010;">{{ wlLabel }}</button>
-        <div style="font-size:13px;line-height:1.5;color:#3c5373;">We only use your details to tell you when membership opens.</div>
+        <div style="font-size:13px;line-height:1.5;color:#3c5373;">We only use your details to tell you when membership opens. See our <a href="#/privacy" style="color:#3c5373;">Privacy policy</a>.</div>
       </form>
     </sc-if>
     <sc-if value="{{ wlDone }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:12px;background:#f3fbef;border:1px solid #55d630;">
         <div style="font-size:24px;font-weight:900;">You're on the list</div>
-        <div style="font-size:16px;line-height:1.6;color:#2c4566;">Thanks {{ joinFirst }}. Jim will be in touch at {{ joinEmail }} as soon as membership opens.</div>
+        <div style="font-size:16px;line-height:1.6;color:#2c4566;">Thanks {{ joinFirst }}. John will be in touch at {{ joinEmail }} as soon as membership opens.</div>
       </div>
     </sc-if>
 
@@ -698,7 +774,7 @@ input::placeholder{color:#8a99ad;}
     <div style="font-size:24px;font-weight:800;">Membership</div>
     <div style="display:flex;align-items:baseline;gap:10px;color:#55d630;font-weight:800;"><span style="font-size:48px;line-height:1;">{{ priceLabel }}</span><span style="font-size:22px;">a month</span></div>
     <div style="font-size:15px;color:#55d630;">Cancel anytime</div>
-    <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;padding-top:8px;"><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Car advert checks</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Exclusive member savings</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Jim, your personal car expert</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Monthly prize draw</span></div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;padding-top:8px;"><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Car advert checks</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Exclusive member savings</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>John, your personal car expert</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Monthly prize draw</span></div></div>
   </div>
 </div></section></div></sc-if>
 
@@ -740,7 +816,7 @@ input::placeholder{color:#8a99ad;}
     <sc-if value="{{ spChecking }}" hint-placeholder-val="{{ false }}"><div style="font-size:16px;color:#2c4566;">Checking your link…</div></sc-if>
     <sc-if value="{{ spBad }}" hint-placeholder-val="{{ false }}">
       <h1 style="margin:0;font-size:clamp(24px,3vw,30px);font-weight:900;letter-spacing:-0.02em;">This link has expired</h1>
-      <div style="font-size:16px;line-height:1.6;color:#2c4566;text-wrap:pretty;">Links work once and expire after a while. Ask for a new one below, or ask Jim to send you a new invite.</div>
+      <div style="font-size:16px;line-height:1.6;color:#2c4566;text-wrap:pretty;">Links work once and expire after a while. Ask for a new one below, or ask John to send you a new invite.</div>
       <a href="#/forgot" style="display:inline-flex;align-items:center;justify-content:center;height:52px;text-decoration:none;background:#0a2d55;color:#fff;border-radius:10px;font-size:16px;font-weight:700;" style-hover="background:#123f74;color:#fff;">Get a new link</a>
     </sc-if>
     <sc-if value="{{ spOk }}" hint-placeholder-val="{{ true }}">
@@ -759,29 +835,29 @@ input::placeholder{color:#8a99ad;}
   <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:clamp(24px,4vw,36px);width:100%;max-width:480px;display:flex;flex-direction:column;gap:16px;color:#0a2d55;">
     <div style="align-self:flex-start;background:#eef9e9;color:#2a7d12;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:700;letter-spacing:0.08em;">COMING SOON</div>
     <h1 style="margin:0;font-size:clamp(24px,3vw,30px);font-weight:900;letter-spacing:-0.02em;">This page opens soon</h1>
-    <div style="font-size:16px;line-height:1.6;color:#2c4566;text-wrap:pretty;">Your dashboard, member savings, advert checks and account page will be here soon. Ask Jim is open now.</div>
-    <a href="#/ask-jim" style="display:inline-flex;align-items:center;justify-content:center;height:52px;text-decoration:none;background:#55d630;color:#062010;border-radius:10px;font-size:16px;font-weight:800;" style-hover="background:#6ee34a;color:#062010;">Go to Ask Jim</a>
+    <div style="font-size:16px;line-height:1.6;color:#2c4566;text-wrap:pretty;">Your dashboard, member savings, advert checks and account page will be here soon. Ask John is open now.</div>
+    <a href="#/ask-john" style="display:inline-flex;align-items:center;justify-content:center;height:52px;text-decoration:none;background:#55d630;color:#062010;border-radius:10px;font-size:16px;font-weight:800;" style-hover="background:#6ee34a;color:#062010;">Go to Ask John</a>
   </div>
 </div></section></div></sc-if>
 
 <sc-if value="{{ pDashboard }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Member dashboard">
-<section style="background:#0a2d55;color:#fff;border-top:1px solid rgba(255,255,255,0.1);"><div style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:10px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">{{ welcomeEyebrow }}</div><h1 style="margin:0;font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;">Hello, {{ firstName }}. What can Jim find for you?</h1><p style="margin:0;font-size:16px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Ask Jim anything about buying or running your car. He will go and find the answer for you, contacting garages, dealers and suppliers and negotiating on your behalf.</p></div></section>
+<section style="background:#0a2d55;color:#fff;border-top:1px solid rgba(255,255,255,0.1);"><div style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:10px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">{{ welcomeEyebrow }}</div><h1 style="margin:0;font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;">Hello, {{ firstName }}. What can John find for you?</h1><p style="margin:0;font-size:16px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Ask John anything about buying or running your car. He will go and find the answer for you, contacting garages, dealers and suppliers and negotiating on your behalf.</p></div></section>
 <section style="background:#f3f6fa;"><div style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:28px;">
   <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
     <div style="flex:999 1 480px;min-width:0;background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:16px;">
-      <div style="font-size:20px;font-weight:800;">Ask Jim</div>
+      <div style="font-size:20px;font-weight:800;">Ask John</div>
       
   <form sc-camel-on-submit="{{ sendRequest }}" style="display:flex;flex-direction:column;gap:14px;">
     <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Your question</span><textarea value="{{ rqText }}" sc-camel-on-change="{{ set_rqText }}" rows="4" placeholder="e.g. Where is my cheapest set of tyres?" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;height:auto;padding:12px 14px;line-height:1.5;resize:vertical;font-size:16px;"></textarea></label>
     <div style="display:flex;flex-wrap:wrap;gap:8px;"><sc-for list="{{ prompts }}" as="pr" hint-placeholder-count="4"><button type="button" sc-camel-on-click="{{ pr.use }}" style="border:1.5px solid #cdd7e3;background:#fff;color:#0a2d55;border-radius:999px;padding:7px 12px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;" style-hover="border-color:#55d630;">{{ pr.text }}</button></sc-for></div>
     <div style="display:flex;flex-wrap:wrap;gap:12px;"><div style="flex:1 1 200px;"><label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Your car (optional)</span><input type="text" value="{{ rqCar }}" sc-camel-on-change="{{ set_rqCar }}" placeholder="e.g. 2019 VW Golf, 225/45 R17" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label></div><div style="flex:1 1 200px;"><label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Your area (optional)</span><input type="text" value="{{ rqArea }}" sc-camel-on-change="{{ set_rqArea }}" placeholder="Postcode or town" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label></div></div>
     <sc-if value="{{ rqErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px;font-weight:600;color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 12px;">{{ rqErr }}</div></sc-if>
-    <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;align-self:flex-start;font-size:16px;" style-hover="background:#6ee34a;color:#062010;"><span>Send to Jim</span><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+    <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;align-self:flex-start;font-size:16px;" style-hover="background:#6ee34a;color:#062010;"><span>Send to John</span><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
   </form>
     </div>
     <div style="flex:1 1 280px;min-width:0;background:#0a2d55;color:#fff;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;">
-      <div style="display:flex;gap:14px;align-items:center;"><div style="flex:0 0 auto;width:72px;height:72px;"><image-slot id="cdc-jim-photo" shape="circle" placeholder="Jim" src="19669435-67a5-47ea-bd11-f878a75573a0"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;"><div style="font-size:20px;font-weight:800;">Jim</div><div style="font-size:13px;font-weight:700;color:#55d630;letter-spacing:0.06em;">FOUNDER · YOUR CONTACT</div></div></div>
-      <div style="font-size:15px;line-height:1.6;color:#dde6f0;">Jim runs Car Deal Club and is your one point of contact. Send him a question and he gets to work:</div>
+      <div style="display:flex;gap:14px;align-items:center;"><div style="flex:0 0 auto;width:72px;height:72px;"><image-slot id="cdc-jim-photo" shape="circle" placeholder="John" src="19669435-67a5-47ea-bd11-f878a75573a0"></image-slot></div><div style="display:flex;flex-direction:column;gap:4px;"><div style="font-size:20px;font-weight:800;">John Bennett</div><div style="font-size:13px;font-weight:700;color:#55d630;letter-spacing:0.06em;">CUSTOMER SUPPORT MANAGER</div></div></div>
+      <div style="font-size:15px;line-height:1.6;color:#dde6f0;">John is our Customer Support Manager and your one point of contact. Send him a question and he gets to work:</div>
       <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
         <div style="display:flex;gap:10px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Contacts garages, dealers and suppliers</span></div>
         <div style="display:flex;gap:10px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Compares prices and negotiates for you</span></div>
@@ -790,7 +866,7 @@ input::placeholder{color:#8a99ad;}
     </div>
   </div>
   <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:6px;">
-    <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding-bottom:6px;"><div style="font-size:18px;font-weight:800;">Your requests</div><a href="#/ask-jim" style="font-size:14px;font-weight:700;color:#3fae1f;">See all</a></div>
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding-bottom:6px;"><div style="font-size:18px;font-weight:800;">Your requests</div><a href="#/ask-john" style="font-size:14px;font-weight:700;color:#3fae1f;">See all</a></div>
     <sc-for list="{{ recentRequests }}" as="rq" hint-placeholder-count="2"><button type="button" sc-camel-on-click="{{ rq.open }}" style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;width:100%;text-align:left;background:{{ rq.bg }};border:0;border-top:1px solid #e3e9f0;padding:14px 12px;font-family:inherit;color:#0a2d55;cursor:pointer;border-radius:8px;" style-hover="background:#f3f6fa;"><span style="display:flex;flex-direction:column;gap:4px;min-width:0;"><span style="font-size:15px;font-weight:700;line-height:1.35;">{{ rq.q }}</span><span style="font-size:13px;color:#6b7f99;">{{ rq.sub }}</span></span><span style="flex:0 0 auto;background:{{ rq.chipBg }};color:{{ rq.chipFg }};border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;white-space:nowrap;">{{ rq.statusLabel }}</span></button></sc-for>
   </div>
   <div style="display:flex;flex-direction:column;gap:16px;">
@@ -801,11 +877,11 @@ input::placeholder{color:#8a99ad;}
 </div></sc-if>
 
 <sc-if value="{{ pSavings }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Member savings">
-<section style="background:#0a2d55;color:#fff;border-top:1px solid rgba(255,255,255,0.1);"><div style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:10px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">MEMBER SAVINGS</div><h1 style="margin:0;font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;">Exclusive member savings</h1><p style="margin:0;font-size:16px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Discounts Jim has negotiated with our partners. Open an offer to redeem it and get your member code.</p></div></section>
+<section style="background:#0a2d55;color:#fff;border-top:1px solid rgba(255,255,255,0.1);"><div style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:10px;"><div style="font-size:13px;font-weight:700;letter-spacing:0.14em;color:#55d630;">MEMBER SAVINGS</div><h1 style="margin:0;font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;">Exclusive member savings</h1><p style="margin:0;font-size:16px;line-height:1.6;color:#dde6f0;max-width:660px;text-wrap:pretty;">Discounts John has negotiated with our partners. Open an offer to redeem it and get your member code.</p></div></section>
 <section style="background:#f3f6fa;"><div style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:18px;">
   <div style="display:flex;flex-wrap:wrap;gap:8px;"><sc-for list="{{ catList }}" as="k" hint-placeholder-count="5"><button type="button" sc-camel-on-click="{{ k.select }}" style="border:1.5px solid {{ k.border }};background:{{ k.bg }};color:{{ k.fg }};border-radius:999px;padding:8px 14px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;">{{ k.label }}</button></sc-for></div>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:16px;"><sc-for list="{{ dealsList }}" as="d" hint-placeholder-count="3"><button type="button" sc-camel-on-click="{{ d.open }}" style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;padding:20px;text-align:left;font-family:inherit;color:#0a2d55;cursor:pointer;display:flex;flex-direction:column;gap:8px;" style-hover="border-color:#55d630;box-shadow:0 10px 30px rgba(10,45,85,0.08);"><span style="align-self:flex-start;background:#eef3f8;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;">{{ d.cat }}</span><div style="font-size:28px;font-weight:900;color:#3fae1f;letter-spacing:-0.01em;">{{ d.saving }}</div><div style="font-size:17px;font-weight:800;line-height:1.3;">{{ d.title }}</div><div style="font-size:14px;color:#3c5373;">{{ d.partner }}</div><div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:{{ d.ctaColor }};padding-top:4px;"><span>{{ d.cta }}</span><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></button></sc-for></div>
-  <div style="font-size:15px;color:#3c5373;">Need something that is not listed? <a href="#/dashboard" style="font-weight:700;">Ask Jim</a> and he will find it.</div>
+  <div style="font-size:15px;color:#3c5373;">Need something that is not listed? <a href="#/dashboard" style="font-weight:700;">Ask John</a> and he will find it.</div>
 </div></section>
 </div></sc-if>
 
@@ -834,34 +910,34 @@ input::placeholder{color:#8a99ad;}
         <sc-if value="{{ g.open }}" hint-placeholder-val="{{ false }}"><div style="padding:0 18px 18px;display:flex;flex-direction:column;gap:10px;"><sc-for list="{{ g.points }}" as="pt" hint-placeholder-count="3"><div style="display:flex;gap:10px;font-size:14px;line-height:1.55;color:#22395a;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>{{ pt }}</span></div></sc-for></div></sc-if>
       </div>
     </sc-for>
-    <a href="#/ask-jim" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#fff;color:#0a2d55;border:1.5px solid #cdd7e3;border-radius:10px;padding:12px 20px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;align-self:flex-start;margin-top:6px;" style-hover="border-color:#0a2d55;color:#0a2d55;">Ask Jim</a>
+    <a href="#/ask-john" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#fff;color:#0a2d55;border:1.5px solid #cdd7e3;border-radius:10px;padding:12px 20px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;align-self:flex-start;margin-top:6px;" style-hover="border-color:#0a2d55;color:#0a2d55;">Ask John</a>
   </div>
 </div></section></div></sc-if>
 
-<sc-if value="{{ pAskJim }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Ask Jim">
+<sc-if value="{{ pAskJim }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Ask John">
 <section style="background:#f3f6fa;"><div style="max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,32px) clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
   <div style="flex:1 1 300px;min-width:0;background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;padding:16px;display:flex;flex-direction:column;gap:6px;">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 4px 10px;"><div style="font-size:18px;font-weight:800;">Your requests</div><button type="button" sc-camel-on-click="{{ newRequest }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;padding:8px 14px;font-size:13px;" style-hover="background:#6ee34a;color:#062010;">New request</button></div>
     <sc-for list="{{ requestList }}" as="rq" hint-placeholder-count="2"><button type="button" sc-camel-on-click="{{ rq.open }}" style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;width:100%;text-align:left;background:{{ rq.bg }};border:0;border-top:1px solid #e3e9f0;padding:14px 12px;font-family:inherit;color:#0a2d55;cursor:pointer;border-radius:8px;" style-hover="background:#f3f6fa;"><span style="display:flex;flex-direction:column;gap:4px;min-width:0;"><span style="font-size:15px;font-weight:700;line-height:1.35;">{{ rq.q }}</span><span style="font-size:13px;color:#6b7f99;">{{ rq.sub }}</span></span><span style="flex:0 0 auto;background:{{ rq.chipBg }};color:{{ rq.chipFg }};border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;white-space:nowrap;">{{ rq.statusLabel }}</span></button></sc-for>
   </div>
   <div style="flex:999 1 480px;min-width:0;background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;padding:0;display:flex;flex-direction:column;overflow:hidden;">
-    <sc-if value="{{ showNewForm }}" hint-placeholder-val="{{ true }}"><div style="padding:24px;display:flex;flex-direction:column;gap:16px;"><div style="font-size:20px;font-weight:800;">New request for Jim</div>
+    <sc-if value="{{ showNewForm }}" hint-placeholder-val="{{ true }}"><div style="padding:24px;display:flex;flex-direction:column;gap:16px;"><div style="font-size:20px;font-weight:800;">New request for John</div>
   <form sc-camel-on-submit="{{ sendRequest }}" style="display:flex;flex-direction:column;gap:14px;">
     <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Your question</span><textarea value="{{ rqText }}" sc-camel-on-change="{{ set_rqText }}" rows="4" placeholder="e.g. Where is my cheapest set of tyres?" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;height:auto;padding:12px 14px;line-height:1.5;resize:vertical;font-size:16px;"></textarea></label>
     <div style="display:flex;flex-wrap:wrap;gap:8px;"><sc-for list="{{ prompts }}" as="pr" hint-placeholder-count="4"><button type="button" sc-camel-on-click="{{ pr.use }}" style="border:1.5px solid #cdd7e3;background:#fff;color:#0a2d55;border-radius:999px;padding:7px 12px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;" style-hover="border-color:#55d630;">{{ pr.text }}</button></sc-for></div>
     <div style="display:flex;flex-wrap:wrap;gap:12px;"><div style="flex:1 1 200px;"><label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Your car (optional)</span><input type="text" value="{{ rqCar }}" sc-camel-on-change="{{ set_rqCar }}" placeholder="e.g. 2019 VW Golf, 225/45 R17" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label></div><div style="flex:1 1 200px;"><label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Your area (optional)</span><input type="text" value="{{ rqArea }}" sc-camel-on-change="{{ set_rqArea }}" placeholder="Postcode or town" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label></div></div>
     <sc-if value="{{ rqErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px;font-weight:600;color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 12px;">{{ rqErr }}</div></sc-if>
-    <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;align-self:flex-start;font-size:16px;" style-hover="background:#6ee34a;color:#062010;"><span>Send to Jim</span><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+    <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;align-self:flex-start;font-size:16px;" style-hover="background:#6ee34a;color:#062010;"><span>Send to John</span><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
   </form></div></sc-if>
     <sc-if value="{{ showThread }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-direction:column;height:min(700px,80vh);">
         <div style="padding:16px 20px;border-bottom:1px solid #e3e9f0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;"><div style="display:flex;flex-direction:column;gap:4px;min-width:0;"><div style="font-weight:800;font-size:17px;line-height:1.35;">{{ cur.q }}</div><div style="font-size:13px;color:#6b7f99;">{{ cur.sub }}</div></div><span style="flex:0 0 auto;background:{{ cur.chipBg }};color:{{ cur.chipFg }};border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;white-space:nowrap;">{{ cur.statusLabel }}</span></div>
         <div ref="{{ threadRef }}" style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:18px;">
           <sc-for list="{{ threadMsgs }}" as="m" hint-placeholder-count="3"><div style="display:flex;gap:12px;align-items:flex-start;flex-direction:{{ m.dir }};"><div style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:{{ m.avatarBg }};color:{{ m.avatarFg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;">{{ m.initials }}</div><div style="display:flex;flex-direction:column;gap:4px;min-width:0;max-width:560px;align-items:{{ m.align }};"><div style="display:flex;gap:8px;align-items:center;"><span style="font-weight:700;font-size:14px;">{{ m.name }}</span><span style="font-size:12px;color:#6b7f99;">{{ m.time }}</span></div><div style="font-size:15px;line-height:1.55;color:#22395a;background:{{ m.bubble }};border-radius:12px;padding:10px 14px;text-wrap:pretty;">{{ m.text }}</div></div></div></sc-for>
-          <sc-if value="{{ cur.working }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#8a5a00;background:#fff4d6;border-radius:10px;padding:10px 14px;align-self:flex-start;"><span style="width:8px;height:8px;border-radius:50%;background:#e0a100;"></span><span>Jim is working on this. You will get an email when he replies.</span></div></sc-if>
+          <sc-if value="{{ cur.working }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#8a5a00;background:#fff4d6;border-radius:10px;padding:10px 14px;align-self:flex-start;"><span style="width:8px;height:8px;border-radius:50%;background:#e0a100;"></span><span>John is working on this. You will get an email when he replies.</span></div></sc-if>
         </div>
         <form sc-camel-on-submit="{{ sendReply }}" style="border-top:1px solid #e3e9f0;padding:12px;display:flex;flex-wrap:wrap;gap:8px;">
-          <input value="{{ rpText }}" sc-camel-on-change="{{ set_rpText }}" placeholder="Reply to Jim" aria-label="Reply to Jim" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;flex:999 1 240px;width:auto;">
+          <input value="{{ rpText }}" sc-camel-on-change="{{ set_rpText }}" placeholder="Reply to John" aria-label="Reply to John" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;flex:999 1 240px;width:auto;">
           <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#0a2d55;color:#fff;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;padding:0 22px;height:48px;flex:1 0 auto;" style-hover="background:#123f74;color:#fff;">Send</button>
         </form>
       </div>
@@ -876,7 +952,7 @@ input::placeholder{color:#8a99ad;}
     <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;"><div style="font-size:20px;font-weight:800;">Membership</div><span style="background:{{ statusBg }};color:{{ statusFg }};border-radius:999px;padding:4px 10px;font-size:12px;font-weight:800;">{{ statusLabel }}</span></div>
     <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;"><div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #e3e9f0;padding-top:10px;"><span style="color:#3c5373;">Plan</span><span style="font-weight:700;">{{ priceLabel }} a month</span></div><div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #e3e9f0;padding-top:10px;"><span style="color:#3c5373;">Paid with</span><span style="font-weight:700;">PayPal</span></div><div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #e3e9f0;padding-top:10px;"><span style="color:#3c5373;">Member since</span><span style="font-weight:700;">{{ memberSince }}</span></div><div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #e3e9f0;padding-top:10px;"><span style="color:#3c5373;">{{ payRowLabel }}</span><span style="font-weight:700;">{{ nextPayment }}</span></div></div>
     <sc-if value="{{ cancelClosed }}" hint-placeholder-val="{{ true }}"><button type="button" sc-camel-on-click="{{ askCancel }}" style="align-self:flex-start;background:transparent;border:0;padding:0;font-family:inherit;font-size:14px;font-weight:600;color:#b3261e;text-decoration:underline;cursor:pointer;">Cancel membership</button></sc-if>
-    <sc-if value="{{ cancelAsk }}" hint-placeholder-val="{{ false }}"><div style="background:#fdecea;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.5;"><span>Your membership stays active until {{ nextPayment }}. After that, member savings, advert checks and your access to Jim close.</span><div style="display:flex;flex-wrap:wrap;gap:8px;"><button type="button" sc-camel-on-click="{{ confirmCancel }}" style="background:#b3261e;color:#fff;border:0;border-radius:8px;padding:10px 14px;font-family:inherit;font-weight:700;cursor:pointer;">Confirm cancellation</button><button type="button" sc-camel-on-click="{{ keepMembership }}" style="background:#fff;color:#0a2d55;border:1px solid #cdd7e3;border-radius:8px;padding:10px 14px;font-family:inherit;font-weight:700;cursor:pointer;">Keep membership</button></div></div></sc-if>
+    <sc-if value="{{ cancelAsk }}" hint-placeholder-val="{{ false }}"><div style="background:#fdecea;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.5;"><span>Your membership stays active until {{ nextPayment }}. After that, member savings, advert checks and your access to John close.</span><div style="display:flex;flex-wrap:wrap;gap:8px;"><button type="button" sc-camel-on-click="{{ confirmCancel }}" style="background:#b3261e;color:#fff;border:0;border-radius:8px;padding:10px 14px;font-family:inherit;font-weight:700;cursor:pointer;">Confirm cancellation</button><button type="button" sc-camel-on-click="{{ keepMembership }}" style="background:#fff;color:#0a2d55;border:1px solid #cdd7e3;border-radius:8px;padding:10px 14px;font-family:inherit;font-weight:700;cursor:pointer;">Keep membership</button></div></div></sc-if>
     <sc-if value="{{ cancelled }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px;line-height:1.5;background:#fff4d6;border-radius:10px;padding:12px 14px;">Membership cancelled. You keep full access until {{ nextPayment }}. <button type="button" sc-camel-on-click="{{ keepMembership }}" style="background:transparent;border:0;padding:0;font-family:inherit;font-size:14px;font-weight:700;color:#0a2d55;text-decoration:underline;cursor:pointer;">Undo</button></div></sc-if>
   </div>
   <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;">
@@ -894,7 +970,7 @@ input::placeholder{color:#8a99ad;}
 <section style="background:#eef2f7;min-height:70vh;"><div style="max-width:1320px;margin:0 auto;padding:24px clamp(16px,3vw,32px);display:flex;justify-content:center;padding-top:64px;">
   <form sc-camel-on-submit="{{ adminLogin }}" style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;width:100%;max-width:420px;display:flex;flex-direction:column;gap:14px;">
     <div style="font-size:26px;font-weight:900;">Admin login</div>
-    <div style="font-size:14px;color:#3c5373;">For Jim and the Car Deal Club team.</div>
+    <div style="font-size:14px;color:#3c5373;">For John and the Car Deal Club team.</div>
     <label style="display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600;"><span>Email address</span><input type="email" sc-camel-auto-complete="email" value="{{ adminEmail }}" sc-camel-on-change="{{ set_adminEmail }}" style="height:44px;border:1px solid #cdd7e3;border-radius:8px;padding:0 12px;font-family:inherit;font-size:14px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
     <label style="display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600;"><span>Password</span><input type="password" sc-camel-auto-complete="current-password" value="{{ adminPw }}" sc-camel-on-change="{{ set_adminPw }}" placeholder="Admin password" style="height:44px;border:1px solid #cdd7e3;border-radius:8px;padding:0 12px;font-family:inherit;font-size:14px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
     <sc-if value="{{ adminErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px;font-weight:600;color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 12px;">{{ adminErr }}</div></sc-if>
@@ -906,7 +982,7 @@ input::placeholder{color:#8a99ad;}
 
 <sc-if value="{{ pAdmin }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Admin requests">
 <section style="background:#eef2f7;"><div style="max-width:1320px;margin:0 auto;padding:24px clamp(16px,3vw,32px);display:flex;flex-direction:column;gap:16px;">
-  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;"><div style="display:flex;flex-direction:column;gap:4px;"><h1 style="margin:0;font-size:26px;font-weight:900;letter-spacing:-0.01em;">Member requests</h1><div style="font-size:14px;color:#3c5373;">Questions members have sent to Jim. Reply here and it appears in their account.</div></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;"><div style="display:flex;flex-direction:column;gap:4px;"><h1 style="margin:0;font-size:26px;font-weight:900;letter-spacing:-0.01em;">Member requests</h1><div style="font-size:14px;color:#3c5373;">Questions members have sent to John. Reply here and it appears in their account.</div></div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;"><sc-for list="{{ adminFilters }}" as="f" hint-placeholder-count="4"><button type="button" sc-camel-on-click="{{ f.select }}" style="border:1.5px solid {{ f.border }};background:{{ f.bg }};color:{{ f.fg }};border-radius:999px;padding:7px 14px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;">{{ f.label }} · {{ f.count }}</button></sc-for></div>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
@@ -1051,8 +1127,11 @@ input::placeholder{color:#8a99ad;}
         <a href="#/prizes" style="color:#fff;text-decoration:none;" style-hover="color:#55d630;">Giveaways</a>
         <a href="#/faqs" style="color:#fff;text-decoration:none;" style-hover="color:#55d630;">FAQs</a>
         <a href="#/contact" style="color:#fff;text-decoration:none;" style-hover="color:#55d630;">Contact</a>
+        <a href="#/terms" style="color:#fff;text-decoration:none;" style-hover="color:#55d630;">Terms</a>
+        <a href="#/privacy" style="color:#fff;text-decoration:none;" style-hover="color:#55d630;">Privacy</a>
       </nav>
       <div style="color:#c9d6e6;">© 2026 Car Deal Club · UK focused motoring membership</div>
+      <div style="flex:1 1 100%;color:#9fb3cc;font-size:12px;line-height:1.55;">Car Deal Club Ltd. Registered in England and Wales, company number 17504431. Registered office: Unit 7-9, Azets, Macon Court, Herald Drive, Crewe, CW1 6EA.</div>
     </div>
   </footer>
 </div>
@@ -1070,9 +1149,11 @@ class Component extends DCLogic {
     // The phone home-screen app opens at /admin/; send it to the admin requests page.
     if (/^\/admin\/?/.test(location.pathname) && !/^#\/(admin|forgot|set-password)/.test(location.hash)) history.replaceState(null, '', location.pathname + '#/admin');
     this.onHash = () => {
+      // Ask Jim became Ask John: old links in emails still open the right request.
+      if (/^#\/ask-jim(\/|$)/.test(location.hash)) return location.replace(location.hash.replace('ask-jim', 'ask-john'));
       const m = location.hash.match(/^#\/([\w-]+)(?:\/([\w-]+))?/), page = m ? m[1] : 'home', sub = (m && m[2]) || '';
       const st = { page, sub, dealId: null, copied: false };
-      if (page === 'ask-jim' && /^\d+$/.test(sub)) st.curReq = Number(sub);
+      if (page === 'ask-john' && /^\d+$/.test(sub)) st.curReq = Number(sub);
       if (page === 'admin' && /^\d+$/.test(sub)) Object.assign(st, { adminSel: Number(sub), adminFilter: 'all' });
       if (page === 'set-password' && sub !== this.state.spToken) { Object.assign(st, { spToken: sub, spState: 'checking', spInfo: null, spErr: '', spPw: '', spPw2: '' }); this.checkToken(sub); }
       if (page === 'forgot') Object.assign(st, { fgDone: false, fgErr: '' });
@@ -1111,7 +1192,7 @@ class Component extends DCLogic {
   // Fetches what the current page shows. Quiet polls skip the slower lists.
   loadFor(page, quiet) {
     const s = this.state;
-    if (s.member && ['ask-jim', 'login', 'join'].includes(page)) this.api('GET', 'requests').then(j => this.setState({ requests: j.requests })).catch(e => { if (e.status === 401) this.loadMe(); });
+    if (s.member && ['ask-john', 'login', 'join'].includes(page)) this.api('GET', 'requests').then(j => this.setState({ requests: j.requests })).catch(e => { if (e.status === 401) this.loadMe(); });
     if (s.adminIn && page === 'admin') this.api('GET', 'admin/requests').then(j => this.setState({ adminRequests: j.requests })).catch(e => { if (e.status === 401) this.loadMe(); });
     if (s.adminIn && page === 'admin-members') {
       this.api('GET', 'admin/members').then(j => this.setState({ members: j.members })).catch(() => {});
@@ -1143,8 +1224,8 @@ class Component extends DCLogic {
     { title: 'Getting a fair part exchange price', tag: 'Selling · 3 min read', points: ['Get online valuations from two or three car buying sites first.', 'Agree the price of the car you are buying before mentioning a part exchange.', 'Compare the dealer offer against selling privately.'] }]; }
   faqs(price) { return [
     { q: 'How much does membership cost?', a: price + ' a month. No joining fee.' },
-    { q: 'Who is Jim?', a: 'Jim founded Car Deal Club and is every member’s personal contact. Send him a question, like where to find the cheapest tyres or where to get your car serviced, and he goes and finds the answer, contacting garages, dealers and suppliers and negotiating for you.' },
-    { q: 'How quickly does Jim reply?', a: 'Jim acknowledges every request and replies in your account as soon as he has an answer. We also email you when he replies.' },
+    { q: 'Who is John?', a: 'John founded Car Deal Club and is every member’s personal contact. Send him a question, like where to find the cheapest tyres or where to get your car serviced, and he goes and finds the answer, contacting garages, dealers and suppliers and negotiating for you.' },
+    { q: 'How quickly does John reply?', a: 'John acknowledges every request and replies in your account as soon as he has an answer. We also email you when he replies.' },
     { q: 'Can I cancel?', a: 'Yes, anytime. Cancel from your account or from PayPal and your membership runs until the end of the month you have paid for.' },
     { q: 'How do I pay?', a: 'By a monthly PayPal subscription. You can pay with your PayPal balance or a card through PayPal.' },
     { q: 'How does the advert check work?', a: 'Log in, open Advert checks and send the advert link, the asking price and anything you are unsure about. We review it and reply in your account.' },
@@ -1161,19 +1242,19 @@ class Component extends DCLogic {
   }
   sendRequest = (e) => {
     e.preventDefault(); const s = this.state, q = s.rqText.trim();
-    if (q.length < 5) return this.setState({ rqErr: 'Tell Jim what you need.' });
+    if (q.length < 5) return this.setState({ rqErr: 'Tell John what you need.' });
     if (s.rqBusy) return;
     this.setState({ rqBusy: true, rqErr: '' });
     this.api('POST', 'requests', { q, car: s.rqCar.trim(), area: s.rqArea.trim() })
-      .then(j => { this.setState({ rqBusy: false, curReq: j.id, rqText: '', rqCar: '', rqArea: '' }); if (this.state.page !== 'ask-jim') this.go('ask-jim'); else this.loadFor('ask-jim'); })
+      .then(j => { this.setState({ rqBusy: false, curReq: j.id, rqText: '', rqCar: '', rqArea: '' }); if (this.state.page !== 'ask-john') this.go('ask-john'); else this.loadFor('ask-john'); })
       .catch(() => this.setState({ rqBusy: false, rqErr: 'That didn’t go through. Please try again.' }));
   };
   sendReply = (e) => {
     e.preventDefault(); const s = this.state, t = s.rpText.trim(); if (!t || !s.curReq) return;
     this.setState({ rpText: '' });
-    this.api('POST', 'requests/' + s.curReq + '/reply', { text: t }).then(() => this.loadFor('ask-jim')).catch(() => this.setState({ rpText: t }));
+    this.api('POST', 'requests/' + s.curReq + '/reply', { text: t }).then(() => this.loadFor('ask-john')).catch(() => this.setState({ rpText: t }));
   };
-  afterLogin(role) { this.setState({ loginPw: '', adminPw: '', spPw: '', spPw2: '' }); return this.loadMe().then(() => this.go(role === 'admin' ? 'admin' : 'ask-jim')); }
+  afterLogin(role) { this.setState({ loginPw: '', adminPw: '', spPw: '', spPw2: '' }); return this.loadMe().then(() => this.go(role === 'admin' ? 'admin' : 'ask-john')); }
   loginError(e) { return e.status === 429 ? 'Too many attempts. Wait 15 minutes and try again.' : e.status === 401 ? 'That email and password don’t match.' : 'That didn’t go through. Please try again.'; }
   onLogin = (e) => {
     e.preventDefault(); const s = this.state, em = s.loginEmail.trim();
@@ -1265,7 +1346,7 @@ class Component extends DCLogic {
     e.preventDefault(); const s = this.state;
     if (!s.aCar.trim() && !s.aUrl.trim()) return this.setState({ aErr: 'Add the car or a link to the advert.' });
     const meta = [s.aPrice.trim(), s.aMiles.trim() ? s.aMiles.trim() + ' miles' : ''].filter(Boolean).join(' · ') || 'Advert link sent';
-    this.setState({ checks: [{ id: Date.now(), email: s.member.email, url: s.aUrl.trim(), notes: s.aNotes.trim(), car: s.aCar.trim() || 'Car from advert link', meta, status: 'With Jim', note: '' }].concat(s.checks), aCar: '', aUrl: '', aPrice: '', aMiles: '', aNotes: '', aErr: '' });
+    this.setState({ checks: [{ id: Date.now(), email: s.member.email, url: s.aUrl.trim(), notes: s.aNotes.trim(), car: s.aCar.trim() || 'Car from advert link', meta, status: 'With John', note: '' }].concat(s.checks), aCar: '', aUrl: '', aPrice: '', aMiles: '', aNotes: '', aErr: '' });
   };
   post(url, body) { return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(r => r.json().catch(() => ({})).then(j => { if (!r.ok || !j.ok) throw new Error(j.error || 'failed'); return j; })); }
   joinWaitlist = (e) => {
@@ -1289,21 +1370,21 @@ class Component extends DCLogic {
   };
   renderVals() {
     const s = this.state, p = this.props, price = p.price ?? '£4.99';
-    const memberPages = ['dashboard', 'ask-jim', 'savings', 'advice', 'account'];
+    const memberPages = ['dashboard', 'ask-john', 'savings', 'advice', 'account'];
     const adminPages = ['admin', 'admin-members', 'admin-savings', 'admin-checks', 'admin-phone'];
-    const alias = { deals: 'savings', 'members-chat': 'ask-jim', chat: 'join' };
-    const known = ['home', 'about', 'benefits', 'prizes', 'faqs', 'contact', 'join', 'login', 'forgot', 'set-password'].concat(memberPages, adminPages);
+    const alias = { deals: 'savings', 'members-chat': 'ask-john', 'ask-jim': 'ask-john', chat: 'join' };
+    const known = ['home', 'about', 'benefits', 'prizes', 'faqs', 'contact', 'terms', 'privacy', 'join', 'login', 'forgot', 'set-password'].concat(memberPages, adminPages);
     const isMember = !!s.member;
     let page = alias[s.page] || s.page, gateMsg = '';
     if (!known.includes(page)) page = 'home';
-    // Only Ask Jim is open to members; the other member pages still say they open soon.
-    if (memberPages.includes(page)) page = !isMember ? 'login' : page === 'ask-jim' ? page : 'soon';
-    if ((page === 'login' || page === 'join') && isMember) page = 'ask-jim';
+    // Only Ask John is open to members; the other member pages still say they open soon.
+    if (memberPages.includes(page)) page = !isMember ? 'login' : page === 'ask-john' ? page : 'soon';
+    if ((page === 'login' || page === 'join') && isMember) page = 'ask-john';
     const onAdmin = adminPages.includes(page) || (page === 'forgot' && s.sub === 'admin');
     if (adminPages.includes(page) && !s.adminIn) page = 'admin-login';
     // Wait for the login check so a logged-in member never sees the login form flash up.
     if (!s.ready && (memberPages.includes(alias[s.page] || s.page) || adminPages.includes(s.page))) page = 'loading';
-    const flags = { home: 'pHome', about: 'pAbout', benefits: 'pBenefits', prizes: 'pPrizes', faqs: 'pFaqs', contact: 'pContact', join: 'pJoin', login: 'pLogin', forgot: 'pForgot', 'set-password': 'pSetPassword', soon: 'pSoon', dashboard: 'pDashboard', 'admin-login': 'pAdminLogin', admin: 'pAdmin', 'admin-members': 'pAdminMembers', 'admin-savings': 'pAdminSavings', 'admin-checks': 'pAdminChecks', 'admin-phone': 'pAdminPhone', 'ask-jim': 'pAskJim', savings: 'pSavings', advice: 'pAdvice', account: 'pAccount' };
+    const flags = { home: 'pHome', about: 'pAbout', benefits: 'pBenefits', prizes: 'pPrizes', faqs: 'pFaqs', contact: 'pContact', terms: 'pTerms', privacy: 'pPrivacy', join: 'pJoin', login: 'pLogin', forgot: 'pForgot', 'set-password': 'pSetPassword', soon: 'pSoon', dashboard: 'pDashboard', 'admin-login': 'pAdminLogin', admin: 'pAdmin', 'admin-members': 'pAdminMembers', 'admin-savings': 'pAdminSavings', 'admin-checks': 'pAdminChecks', 'admin-phone': 'pAdminPhone', 'ask-john': 'pAskJim', savings: 'pSavings', advice: 'pAdvice', account: 'pAccount' };
     const v = {}; Object.keys(flags).forEach(k => { v[flags[k]] = page === k; });
     const m = s.member || {};
     const nav = (list, on, off) => list.map(([id, label]) => ({ href: '#/' + id, label, color: page === id ? on : off, border: page === id ? '#55d630' : 'transparent' }));
@@ -1316,8 +1397,8 @@ class Component extends DCLogic {
     const next = new Date(joined); do { next.setMonth(next.getMonth() + 1); } while (next < new Date());
     const fmtDate = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
     const seg = (cur, val) => ({ bg: cur === val ? '#0a2d55' : '#fff', fg: cur === val ? '#fff' : '#0a2d55', border: cur === val ? '#0a2d55' : '#cdd7e3' });
-    const ST = { sent: ['Sent to Jim', '#e6eef8', '#0a2d55'], working: ['Jim is on it', '#fff4d6', '#8a5a00'], answered: ['Answer ready', '#eef9e9', '#2a7d12'] };
-    const fr = r => Object.assign({}, r, { statusLabel: ST[r.status][0], chipBg: ST[r.status][1], chipFg: ST[r.status][2], working: r.status !== 'answered', sub: [this.when(r.created), r.car, r.area].filter(Boolean).join(' · '), bg: page === 'ask-jim' && r.id === s.curReq ? '#eef3f8' : 'transparent', open: () => { this.setState({ curReq: r.id }); if (page !== 'ask-jim') this.go('ask-jim'); } });
+    const ST = { sent: ['Sent to John', '#e6eef8', '#0a2d55'], working: ['John is on it', '#fff4d6', '#8a5a00'], answered: ['Answer ready', '#eef9e9', '#2a7d12'] };
+    const fr = r => Object.assign({}, r, { statusLabel: ST[r.status][0], chipBg: ST[r.status][1], chipFg: ST[r.status][2], working: r.status !== 'answered', sub: [this.when(r.created), r.car, r.area].filter(Boolean).join(' · '), bg: page === 'ask-john' && r.id === s.curReq ? '#eef3f8' : 'transparent', open: () => { this.setState({ curReq: r.id }); if (page !== 'ask-john') this.go('ask-john'); } });
     const reqs = s.requests.filter(mine).map(fr), cur = reqs.find(r => r.id === s.curReq) || null;
     const prompts = ['Where is my cheapest set of tyres?', 'Where can I take my car for a service?', 'Can you get me a better price on this car?', 'Is this finance quote any good?'];
     Object.assign(v, {
@@ -1327,7 +1408,7 @@ class Component extends DCLogic {
       winnerHeadline: p.winnerHeadline ?? 'Our first winner will be announced here.',
       winnerPrize: p.winnerPrize ?? 'Every member is entered into the monthly draw.',
       publicNav: nav([['home', 'Home'], ['about', 'About'], ['benefits', 'Member benefits'], ['prizes', 'Giveaways'], ['faqs', 'FAQs'], ['contact', 'Contact']], '#3fae1f', '#0a2d55'),
-      memberNav: nav([['dashboard', 'Dashboard'], ['ask-jim', 'Ask Jim'], ['savings', 'Member savings'], ['advice', 'Advert checks'], ['account', 'Account']], '#55d630', '#fff'),
+      memberNav: nav([['dashboard', 'Dashboard'], ['ask-john', 'Ask John'], ['savings', 'Member savings'], ['advice', 'Advert checks'], ['account', 'Account']], '#55d630', '#fff'),
       memberName: m.name || '', memberEmail: m.email || '', firstName: first, memberInitials: initials,
       memberSince: joined.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }), nextPayment: fmtDate(next),
       monthName: new Date().toLocaleDateString('en-GB', { month: 'long' }),
@@ -1347,7 +1428,7 @@ class Component extends DCLogic {
       recentRequests: reqs.slice(0, 3), requestList: reqs,
       newRequest: () => this.setState({ curReq: null }), showNewForm: !cur, showThread: !!cur,
       cur: cur || {}, threadRef: this.threadRef, sendReply: this.sendReply,
-      threadMsgs: cur ? cur.msgs.map(x => ({ name: x.me ? 'You' : 'Jim', time: this.when(x.at, true), text: x.text, initials: x.me ? initials : 'J', avatarBg: x.me ? '#0a2d55' : '#55d630', avatarFg: x.me ? '#fff' : '#062010', bubble: x.me ? '#e6eef8' : '#eef9e9', dir: x.me ? 'row-reverse' : 'row', align: x.me ? 'flex-end' : 'flex-start' })) : [],
+      threadMsgs: cur ? cur.msgs.map(x => ({ name: x.me ? 'You' : 'John', time: this.when(x.at, true), text: x.text, initials: x.me ? initials : 'J', avatarBg: x.me ? '#0a2d55' : '#55d630', avatarFg: x.me ? '#fff' : '#062010', bubble: x.me ? '#e6eef8' : '#eef9e9', dir: x.me ? 'row-reverse' : 'row', align: x.me ? 'flex-end' : 'flex-start' })) : [],
       featuredDeals: [deals[0], deals[2], deals[4]],
       dealsList: s.dealCat === 'All' ? deals : deals.filter(d => d.cat === s.dealCat),
       catList: cats.map(c => Object.assign({ label: c, select: () => this.setState({ dealCat: c }) }, seg(s.dealCat, c))),
@@ -1389,7 +1470,7 @@ class Component extends DCLogic {
       adminNav: [['admin', 'Requests', counts.sent], ['admin-checks', 'Advert checks', s.checks.filter(c => c.status !== 'Reviewed').length], ['admin-savings', 'Member savings', 0], ['admin-members', 'Members', 0], ['admin-phone', 'Notifications', 0]].map(([id, label, c]) => ({ href: '#/' + id, label, count: c || '', color: page === id ? '#55d630' : '#fff', border: page === id ? '#55d630' : 'transparent' })),
       adminFilters: [['open', 'Open'], ['sent', 'New'], ['answered', 'Answered'], ['all', 'All']].map(([id, label]) => Object.assign({ label, count: counts[id], select: () => this.setState({ adminFilter: id }) }, seg(s.adminFilter, id))),
       adminReqs: areq, noAdminReqs: areq.length === 0, asel: asel || {}, hasAdminSel: !!asel, noAdminSel: !asel, adminThreadRef: this.adminThreadRef,
-      adminMsgs: aselR ? aselR.msgs.map(x => ({ name: x.me ? who(aselR).name : 'Jim (you)', time: this.when(x.at, true), text: x.text, initials: x.me ? who(aselR).name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() : 'J', avatarBg: x.me ? '#dfe6ee' : '#55d630', avatarFg: '#0a2d55', bubble: x.me ? '#f3f6fa' : '#eef9e9', dir: x.me ? 'row' : 'row-reverse', align: x.me ? 'flex-start' : 'flex-end' })) : [],
+      adminMsgs: aselR ? aselR.msgs.map(x => ({ name: x.me ? who(aselR).name : 'John (you)', time: this.when(x.at, true), text: x.text, initials: x.me ? who(aselR).name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() : 'J', avatarBg: x.me ? '#dfe6ee' : '#55d630', avatarFg: '#0a2d55', bubble: x.me ? '#f3f6fa' : '#eef9e9', dir: x.me ? 'row' : 'row-reverse', align: x.me ? 'flex-start' : 'flex-end' })) : [],
       markWorking: () => aselR && jimReply(aselR, 'Thanks ' + who(aselR).name.split(' ')[0] + ', I am on it. I will come back to you here as soon as I have an answer.', 'working'),
       adAnswered: s.adAnswered, toggleAnswered: () => this.setState({ adAnswered: !s.adAnswered }),
       adminSend: (e) => { e.preventDefault(); const t = s.adReply.trim(); if (!t || !aselR) return; this.setState({ adReply: '' }); jimReply(aselR, t, s.adAnswered ? 'answered' : 'working').catch(() => this.setState({ adReply: t })); },

@@ -222,8 +222,8 @@ const routes = {
     ]);
     ctx.waitUntil(sendEmail(env, {
       to: r.email,
-      subject: 'Jim has replied to your request',
-      text: `Hello ${firstName(r.name)},\n\nJim has replied to your request:\n"${r.question.slice(0, 300)}"\n\n${text}\n\nRead it and reply in your account: ${origin}/#/ask-jim/${r.id}\n\nCar Deal Club\n`,
+      subject: 'John has replied to your request',
+      text: `Hello ${firstName(r.name)},\n\nJohn has replied to your request:\n"${r.question.slice(0, 300)}"\n\n${text}\n\nRead it and reply in your account: ${origin}/#/ask-john/${r.id}\n\nCar Deal Club\n`,
     }));
     return json({ ok: true });
   },
@@ -276,7 +276,7 @@ const routes = {
     const sent = await sendEmail(env, {
       to: email,
       subject: 'Your Car Deal Club membership',
-      text: `Hello ${firstName(user.name)},\n\nJim has set up your Car Deal Club member account. Use this link to choose your password:\n\n${link}\n\nThe link works once and expires in 7 days. After that, log in at ${origin}/#/login with ${email}.\n\nCar Deal Club\n`,
+      text: `Hello ${firstName(user.name)},\n\nJohn has set up your Car Deal Club member account. Use this link to choose your password:\n\n${link}\n\nThe link works once and expires in 7 days. After that, log in at ${origin}/#/login with ${email}.\n\nCar Deal Club\n`,
     });
     return json({ ok: true, sent, link });
   },
