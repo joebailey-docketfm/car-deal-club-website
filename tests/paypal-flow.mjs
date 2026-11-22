@@ -91,6 +91,9 @@ assert.equal(r.json.state, 'done'); ok('status then says done');
 
 r = await call('POST', 'join/start', { name: 'Sam Driver', email: 'sam@example.com', agree: true });
 assert.equal(r.json.error, 'member'); ok('an active member cannot join twice');
+db.exec("INSERT INTO users (email, name, role, created_at) VALUES ('john@example.test', 'John', 'admin', 0)");
+r = await call('POST', 'join/start', { name: 'John', email: 'john@example.test', agree: true });
+assert.equal(r.json.error, 'admin'); ok('the admin email cannot be used to join');
 
 await send('PAYMENT.SALE.COMPLETED', { id: 'SALE1', billing_agreement_id: 'I-SUB1' }); ok('monthly payment handled');
 await send('BILLING.SUBSCRIPTION.CANCELLED', { id: 'I-SUB1' });
@@ -110,6 +113,6 @@ r = await call('POST', 'login', { email: 'sam@example.com', password: 'a-long-pa
 assert.ok(r.json.ok); ok('rejoining restores access with the same login');
 
 await send('BILLING.SUBSCRIPTION.ACTIVATED', { id: 'I-OTHER', custom_id: 'cdc-from-other-site' });
-assert.equal(db.prepare('SELECT COUNT(*) n FROM users').get().n, 1); ok('subscriptions from the other environment are ignored');
+assert.equal(db.prepare('SELECT COUNT(*) n FROM users WHERE role = \'member\'').get().n, 1); ok('subscriptions from the other environment are ignored');
 
 console.log('paypal-flow: all checks passed');

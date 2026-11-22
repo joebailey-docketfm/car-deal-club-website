@@ -179,7 +179,8 @@ const routes = {
     if (!EMAIL_RE.test(email)) return fail('email');
     if (body.agree !== true) return fail('agree');
     const existing = await env.DB.prepare('SELECT role, paid_until, paypal_status FROM users WHERE email = ?').bind(email).first();
-    if (existing && (existing.role === 'admin' || (!lapsed(existing) && existing.paypal_status !== 'CANCELLED'))) return fail('member', 409);
+    if (existing && existing.role === 'admin') return fail('admin', 409);
+    if (existing && !lapsed(existing) && existing.paypal_status !== 'CANCELLED') return fail('member', 409);
     const id = 'cdc-' + randomToken(12), key = randomToken();
     await env.DB.prepare('INSERT INTO signups (id, key_hash, name, email, created_at) VALUES (?, ?, ?, ?, ?)')
       .bind(id, await sha256(key), name, email, Date.now()).run();
