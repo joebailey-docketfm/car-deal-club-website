@@ -1,6 +1,7 @@
 # Cloudflare Pages project car-deal-club, in Jim's Cloudflare account.
 # This file is the source of truth for the project's bindings. Secrets
 # (RESEND_API_KEY, VAPID_PRIVATE_JWK) are set with `wrangler pages secret put`.
+# PayPal needs no secret: webhooks are checked against PayPal's certificate.
 name = "car-deal-club"
 compatibility_date = "2026-10-20"
 pages_build_output_dir = "public"
@@ -42,6 +43,12 @@ ADMIN_EMAIL = "james_dean1@sky.com"
 VAPID_PUBLIC = "BOjAgwHU2zumrIbmEj6D1iFslqLlVVjOskOWfnpbUe1pevt396ABXNpm9e3s-gxDvGsvQu3SoYMW4yCfRtj9MHM"
 # Preview only sends email to these addresses. Anyone else gets a link shown to Jim instead.
 EMAIL_ALLOW = "james_dean1@sky.com,delivered@resend.dev,delivered+admin@resend.dev"
+# PayPal (Jim's live account). Not secret: the Client ID is in the PayPal button on the page.
+# Without these the Join page shows the waiting list. Production gets them when Joe says GO.
+PAYPAL_CLIENT_ID = "BAADluNVPTslhhZwYTPM9pTfmdiXc4M98VroPzO7oWgzDpy6lSEvWmEoHwFCn3ruxjDArq6jbvigpuZyp0"
+PAYPAL_PLAN_ID = "P-3KV276635L838440JNMBLJWQ"
+# Webhook registered in PayPal for https://preview.car-deal-club.pages.dev/api/paypal/webhook
+PAYPAL_WEBHOOK_ID = "4RJ87725UM158842V"
 
 [[env.preview.kv_namespaces]]
 binding = "SIGNUPS"

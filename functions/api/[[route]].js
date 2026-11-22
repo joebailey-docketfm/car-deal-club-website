@@ -1,10 +1,11 @@
-// Members' area API: login, invites, Ask Jim requests, Jim's admin and push subscriptions.
+// Members' area API: login, invites, Ask John requests, John's admin, PayPal sign-ups and push subscriptions.
 // /api/subscribe and /api/contact are separate files and take precedence over this catch-all.
 import { hashPassword, verifyPassword, randomToken, sha256 } from '../_lib/crypto.js';
 import { sendEmail, canEmail } from '../_lib/mail.js';
-import { pushToAdmins, sendPush } from '../_lib/push.js';
+import { sendPush } from '../_lib/push.js';
+import { DAY, firstName, issueToken, tellAdmins, lapsed } from '../_lib/members.js';
+import { ensureSchema } from '../_lib/schema.js';
 
-const DAY = 86400000;
 const SESSION_DAYS = 30;
 const COOKIE = 'cdc_session';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,9 +28,10 @@ function readCookie(request) {
 async function currentUser(env, request) {
   const token = readCookie(request);
   if (!token) return null;
-  return env.DB.prepare(
-    'SELECT u.id, u.email, u.name, u.role, u.activated_at FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.id = ? AND s.expires_at > ?'
+  const u = await env.DB.prepare(
+    'SELECT u.id, u.email, u.name, u.role, u.activated_at, u.paid_until FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.id = ? AND s.expires_at > ?'
   ).bind(await sha256(token), Date.now()).first();
+  return lapsed(u) ? null : u;
 }
 
 // remember: 30 days. Otherwise the cookie ends with the browser, and the server forgets it after a day.
@@ -55,16 +57,6 @@ async function hit(env, key, windowMs) {
 const clearHits = (env, key) => env.DB.prepare('DELETE FROM attempts WHERE key = ?').bind(key).run();
 
 const ip = (request) => request.headers.get('CF-Connecting-IP') || 'unknown';
-const firstName = (name) => String(name || '').split(' ')[0];
-
-async function issueToken(env, userId, kind) {
-  const token = randomToken();
-  const life = kind === 'invite' ? 7 * DAY : 60 * 60 * 1000;
-  await env.DB.prepare("UPDATE tokens SET used_at = ? WHERE user_id = ? AND used_at IS NULL").bind(Date.now(), userId).run();
-  await env.DB.prepare('INSERT INTO tokens (id, user_id, kind, expires_at) VALUES (?, ?, ?, ?)')
-    .bind(await sha256(token), userId, kind, Date.now() + life).run();
-  return token;
-}
 
 async function findToken(env, token) {
   if (!token) return null;
@@ -91,13 +83,17 @@ async function loadRequests(env, where, bind) {
 
 // Tells Jim about a new request or a member's reply: push to his phone, email as the backup.
 // Goes to every admin account, which in practice is Jim's.
-async function tellJim(env, origin, { title, body, id }) {
-  const url = '/admin/#/admin/' + id;
-  const { results: admins } = await env.DB.prepare("SELECT email FROM users WHERE role = 'admin'").all();
-  await Promise.all([
-    pushToAdmins(env, { title, body: body.slice(0, 180), url }),
-    ...admins.map((a) => sendEmail(env, { to: a.email, subject: title, text: `${title}\n\n${body}\n\nOpen it in your admin: ${origin}${url}\n` })),
-  ]);
+// A sign-up belongs to the browser that holds its key. Sign-ups older than a day are closed.
+async function findSignup(env, body) {
+  const id = clean(body.id, 40), key = String(body.key || '');
+  if (!id || !key) return null;
+  const s = await env.DB.prepare('SELECT id, key_hash, user_id, created_at FROM signups WHERE id = ?').bind(id).first();
+  if (!s || s.key_hash !== (await sha256(key)) || s.created_at < Date.now() - DAY) return null;
+  return s;
+}
+
+function tellJim(env, origin, { title, body, id }) {
+  return tellAdmins(env, origin, { title, body, url: '/admin/#/admin/' + id });
 }
 
 const routes = {
@@ -108,7 +104,7 @@ const routes = {
     const password = String(body.password || '');
     const kEmail = 'login:e:' + email, kIp = 'login:i:' + ip(request);
     if ((await limited(env, kEmail, 5)) || (await limited(env, kIp, 30))) return fail('too_many', 429);
-    const user = await env.DB.prepare('SELECT id, password_hash, role FROM users WHERE email = ?').bind(email).first();
+    const user = await env.DB.prepare('SELECT id, password_hash, role, paid_until FROM users WHERE email = ?').bind(email).first();
     const okPw = await verifyPassword(password, user && user.password_hash);
     if (!user || !okPw || (body.admin && user.role !== 'admin')) {
       await hit(env, kEmail, 15 * 60000);
@@ -116,6 +112,7 @@ const routes = {
       return fail('wrong', 401);
     }
     await clearHits(env, kEmail);
+    if (lapsed(user)) return fail('lapsed', 403);
     // Jim's admin login has no tick box, so it always remembers him.
     return json({ ok: true, role: user.role }, 200, { 'Set-Cookie': await startSession(env, user.id, !!body.admin || body.remember === true) });
   },
@@ -166,6 +163,47 @@ const routes = {
       env.DB.prepare('DELETE FROM sessions WHERE user_id = ?').bind(t.user_id),
     ]);
     return json({ ok: true, role: t.role }, 200, { 'Set-Cookie': await startSession(env, t.user_id) });
+  },
+
+  // Joining through PayPal. The Join page only offers PayPal when PAYPAL_CLIENT_ID and
+  // PAYPAL_PLAN_ID are set for this environment; otherwise it keeps the waiting list.
+  'GET join/config': async ({ env }) => json({ ok: true, paypal: !!(env.PAYPAL_CLIENT_ID && env.PAYPAL_PLAN_ID), clientId: env.PAYPAL_CLIENT_ID || '', planId: env.PAYPAL_PLAN_ID || '' }),
+
+  'POST join/start': async ({ env, request, body }) => {
+    if (!env.PAYPAL_CLIENT_ID || !env.PAYPAL_PLAN_ID) return fail('closed', 404);
+    const kIp = 'join:i:' + ip(request);
+    if (await limited(env, kIp, 20)) return fail('too_many', 429);
+    await hit(env, kIp, 60 * 60000);
+    const name = clean(body.name, 120), email = clean(body.email, 200).toLowerCase();
+    if (name.length < 2) return fail('name');
+    if (!EMAIL_RE.test(email)) return fail('email');
+    if (body.agree !== true) return fail('agree');
+    const existing = await env.DB.prepare('SELECT role, paid_until, paypal_status FROM users WHERE email = ?').bind(email).first();
+    if (existing && (existing.role === 'admin' || (!lapsed(existing) && existing.paypal_status !== 'CANCELLED'))) return fail('member', 409);
+    const id = 'cdc-' + randomToken(12), key = randomToken();
+    await env.DB.prepare('INSERT INTO signups (id, key_hash, name, email, created_at) VALUES (?, ?, ?, ?, ?)')
+      .bind(id, await sha256(key), name, email, Date.now()).run();
+    return json({ ok: true, id, key });
+  },
+
+  'POST join/approved': async ({ env, body }) => {
+    const s = await findSignup(env, body);
+    if (!s) return fail('not_found', 404);
+    const sub = clean(body.sub, 60);
+    if (/^I-[A-Z0-9]+$/.test(sub)) await env.DB.prepare('UPDATE signups SET sub_id = COALESCE(sub_id, ?) WHERE id = ?').bind(sub, s.id).run();
+    return json({ ok: true });
+  },
+
+  // The Join page asks this every few seconds after paying. Once PayPal has told us the
+  // subscription is active, it gets a set-password link straight away (the email is a backup).
+  'POST join/status': async ({ env, body }) => {
+    const s = await findSignup(env, body);
+    if (!s) return fail('not_found', 404);
+    if (!s.user_id) return json({ ok: true, state: 'waiting' });
+    const u = await env.DB.prepare('SELECT id, activated_at, paid_until, role FROM users WHERE id = ?').bind(s.user_id).first();
+    if (!u || lapsed(u)) return json({ ok: true, state: 'waiting' });
+    if (u.activated_at) return json({ ok: true, state: 'done' });
+    return json({ ok: true, state: 'active', token: await issueToken(env, u.id, 'invite', true) });
   },
 
   // Member: Ask Jim
@@ -231,7 +269,7 @@ const routes = {
   'GET admin/members': async ({ env, admin }) => {
     if (!admin) return fail('login', 401);
     const { results } = await env.DB.prepare(
-      "SELECT u.name, u.email, u.created_at, u.activated_at, (SELECT COUNT(*) FROM requests r WHERE r.user_id = u.id) AS reqs FROM users u WHERE u.role = 'member' ORDER BY u.created_at DESC"
+      "SELECT u.name, u.email, u.created_at, u.activated_at, u.paypal_sub, u.paypal_status, u.paid_until, (SELECT COUNT(*) FROM requests r WHERE r.user_id = u.id) AS reqs FROM users u WHERE u.role = 'member' ORDER BY u.created_at DESC"
     ).all();
     return json({ ok: true, members: results });
   },
@@ -338,6 +376,7 @@ export async function onRequest(context) {
     try { body = await request.json(); } catch { return fail('json'); }
   }
 
+  await ensureSchema(env);
   const user = await currentUser(env, request);
   const admin = user && user.role === 'admin' ? user : null;
   try {

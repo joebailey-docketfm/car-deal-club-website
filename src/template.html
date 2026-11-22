@@ -750,6 +750,7 @@ input::placeholder{color:#8a99ad;}
 <sc-if value="{{ pJoin }}" hint-placeholder-val="{{ false }}"><div data-screen-label="Join">
 <section style="background:#f3f6fa;"><div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
   <div style="flex:999 1 460px;min-width:0;background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;padding:clamp(24px,4vw,36px);display:flex;flex-direction:column;gap:18px;">
+    <sc-if value="{{ ppOff }}" hint-placeholder-val="{{ true }}">
     <div style="align-self:flex-start;background:#eef9e9;color:#2a7d12;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:700;letter-spacing:0.08em;">OPENING SOON</div>
     <sc-if value="{{ wlOpen }}" hint-placeholder-val="{{ true }}">
       <form sc-camel-on-submit="{{ joinWaitlist }}" style="display:flex;flex-direction:column;gap:16px;">
@@ -768,13 +769,52 @@ input::placeholder{color:#8a99ad;}
         <div style="font-size:16px;line-height:1.6;color:#2c4566;">Thanks {{ joinFirst }}. John will be in touch at {{ joinEmail }} as soon as membership opens.</div>
       </div>
     </sc-if>
+    </sc-if>
+    <sc-if value="{{ ppOn }}" hint-placeholder-val="{{ false }}">
+      <sc-if value="{{ jpForm }}" hint-placeholder-val="{{ true }}">
+      <form sc-camel-on-submit="{{ startJoin }}" style="display:flex;flex-direction:column;gap:16px;">
+        <h1 style="margin:0;font-size:clamp(26px,3.4vw,34px);font-weight:900;letter-spacing:-0.02em;">Join Car Deal Club</h1>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#2c4566;text-wrap:pretty;">{{ priceLabel }} a month by PayPal subscription. Cancel anytime.</p>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Full name</span><input type="text" sc-camel-auto-complete="name" value="{{ joinName }}" sc-camel-on-change="{{ set_joinName }}" placeholder="First and last name" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;"><span>Email address</span><input type="email" sc-camel-auto-complete="email" value="{{ joinEmail }}" sc-camel-on-change="{{ set_joinEmail }}" placeholder="you@example.com" style="height:48px;border:1px solid #cdd7e3;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;color:#0a2d55;background:#fff;outline:none;width:100%;min-width:0;"></label>
+        <label style="display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;cursor:pointer;">
+          <input type="checkbox" checked="{{ joinAgree }}" sc-camel-on-change="{{ toggleAgree }}" style="width:16px;height:16px;margin:2px 0 0;flex:0 0 auto;accent-color:#0a2d55;">
+          <span>I agree to the <a href="#/terms">membership terms</a> and have read the <a href="#/privacy">privacy policy</a>.</span>
+        </label>
+        <sc-if value="{{ jpErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px;font-weight:600;color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 12px;">{{ jpErr }}</div></sc-if>
+        <button type="submit" disabled="{{ jpBusy }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#55d630;color:#062010;border:0;border-radius:10px;padding:14px 22px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;" style-hover="background:#6ee34a;color:#062010;">{{ jpLabel }}</button>
+        <div style="font-size:13px;line-height:1.5;color:#3c5373;">Your email address is your member login. After paying, you choose a password.</div>
+      </form>
+      </sc-if>
+      <sc-if value="{{ jpPay }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <h1 style="margin:0;font-size:clamp(26px,3.4vw,34px);font-weight:900;letter-spacing:-0.02em;">Pay with PayPal</h1>
+          <p style="margin:0;font-size:16px;line-height:1.65;color:#2c4566;text-wrap:pretty;">Thanks {{ joinFirst }}. PayPal sets up a monthly payment of {{ priceLabel }}, which you can cancel at any time. You can pay with your PayPal account or a card.</p>
+          <div ref="{{ ppRef }}" style="min-height:150px;"></div>
+          <sc-if value="{{ jpErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px;font-weight:600;color:#b3261e;background:#fdecea;border-radius:8px;padding:10px 12px;">{{ jpErr }}</div></sc-if>
+          <button type="button" sc-camel-on-click="{{ joinBack }}" style="align-self:flex-start;background:transparent;border:0;padding:0;font-family:inherit;font-size:14px;font-weight:700;color:#0a2d55;text-decoration:underline;cursor:pointer;">Change my details</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ jpWait }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:12px;background:#f3fbef;border:1px solid #55d630;">
+          <div style="font-size:24px;font-weight:900;">Payment received</div>
+          <div style="font-size:16px;line-height:1.6;color:#2c4566;">Thanks {{ joinFirst }}. We are setting up your account now. This usually takes a few seconds.</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ jpSlow }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:12px;background:#f3fbef;border:1px solid #55d630;">
+          <div style="font-size:24px;font-weight:900;">You're a member</div>
+          <div style="font-size:16px;line-height:1.6;color:#2c4566;">Thanks {{ joinFirst }}. Your payment went through. We will email {{ joinEmail }} a link to choose your password in the next few minutes. If it doesn't arrive, check your junk folder or <a href="#/contact">contact us</a>.</div>
+        </div>
+      </sc-if>
+    </sc-if>
 
   </div>
   <div style="flex:1 1 300px;min-width:0;background:#0a2d55;color:#fff;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;">
     <div style="font-size:24px;font-weight:800;">Membership</div>
     <div style="display:flex;align-items:baseline;gap:10px;color:#55d630;font-weight:800;"><span style="font-size:48px;line-height:1;">{{ priceLabel }}</span><span style="font-size:22px;">a month</span></div>
     <div style="font-size:15px;color:#55d630;">Cancel anytime</div>
-    <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;padding-top:8px;"><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Car advert checks</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Exclusive member savings</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>John, your personal car expert</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Monthly prize draw</span></div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;padding-top:8px;"><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Car advert checks</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Exclusive member savings</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>John, your personal car expert</span></div><div style="display:flex;gap:12px;align-items:center;"><svg width="20" height="20" sc-camel-view-box="0 0 24 24" style="flex:0 0 auto;"><circle cx="12" cy="12" r="11" fill="#3fae1f"></circle><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Monthly giveaway draw</span></div></div>
   </div>
 </div></section></div></sc-if>
 
@@ -1037,7 +1077,7 @@ input::placeholder{color:#8a99ad;}
   <div style="background:#fff;border:1px solid #e3e9f0;border-radius:14px;padding:24px;padding:0;overflow-x:auto;">
     <div style="min-width:680px;display:flex;flex-direction:column;">
       <div style="display:grid;grid-template-columns:1.2fr 1.6fr 1fr 0.8fr 0.8fr;gap:12px;padding:12px 20px;font-size:12px;font-weight:800;letter-spacing:0.08em;color:#6b7f99;border-bottom:1px solid #e3e9f0;"><span>NAME</span><span>EMAIL</span><span>JOINED</span><span>REQUESTS</span><span>STATUS</span></div>
-      <sc-for list="{{ adminMembers }}" as="mb" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:1.2fr 1.6fr 1fr 0.8fr 0.8fr;gap:12px;padding:14px 20px;font-size:14px;border-bottom:1px solid #eef2f7;align-items:center;"><span style="font-weight:700;">{{ mb.name }}</span><span style="color:#3c5373;overflow:hidden;text-overflow:ellipsis;">{{ mb.email }}</span><span>{{ mb.joined }}</span><span>{{ mb.reqs }}</span><span style="justify-self:start;background:{{ mb.chipBg }};color:{{ mb.chipFg }};border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;">{{ mb.statusLabel }}</span></div></sc-for>
+      <sc-for list="{{ adminMembers }}" as="mb" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:1.2fr 1.6fr 1fr 0.8fr 0.8fr;gap:12px;padding:14px 20px;font-size:14px;border-bottom:1px solid #eef2f7;align-items:center;"><span style="font-weight:700;">{{ mb.name }}</span><span style="color:#3c5373;overflow:hidden;text-overflow:ellipsis;display:flex;flex-direction:column;gap:2px;"><span>{{ mb.email }}</span><sc-if value="{{ mb.sub }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#6b7f99;">PayPal {{ mb.sub }}</span></sc-if></span><span>{{ mb.joined }}</span><span>{{ mb.reqs }}</span><span style="justify-self:start;background:{{ mb.chipBg }};color:{{ mb.chipFg }};border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;">{{ mb.statusLabel }}</span></div></sc-for>
     </div>
   </div>
 </div></section>
@@ -1139,8 +1179,9 @@ input::placeholder{color:#8a99ad;}
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;price&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;£4.99&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Membership&quot;},&quot;showLogin&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Home&quot;},&quot;skipLogin&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;},&quot;winnerHeadline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Our first winner will be announced here.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prize draw&quot;},&quot;winnerPrize&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Every member is entered into the monthly draw.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prize draw&quot;}}">
 class Component extends DCLogic {
   threadRef = React.createRef();
+  ppRef = React.createRef();
   adminThreadRef = React.createRef();
-  state = { me: null, ready: false, adminIn: false, adminEmail: '', adminPw: '', adminErr: '', adminBusy: false, adminFilter: 'open', adminSel: null, adReply: '', adAnswered: true, adminRequests: [], members: [], waitlist: [], ivName: '', ivEmail: '', ivErr: '', ivSent: '', ivLink: '', ivFor: '', ivBusy: false, ivCopied: false, pushState: 'unknown', pushMsg: '', backup: null, fgEmail: '', fgErr: '', fgDone: false, fgBusy: false, spToken: '', spInfo: null, spState: 'checking', spPw: '', spPw2: '', spErr: '', spBusy: false, loginBusy: false, deals: [], drafts: {}, ndTitle: '', ndSaving: '', ndPartner: '', ndCat: '', ndCode: '', ndErr: '', page: 'home', sub: '', member: null, loginEmail: '', loginPw: '', loginRemember: false, loginErr: '', joinName: '', joinEmail: '', joinPw: '', joinAgree: false, joinStep: 1, joinErr: '', wlDone: false, wlBusy: false, paying: false, justJoined: false, dealCat: 'All', dealId: null, redeemed: {}, copied: false, faqOpen: 0, cName: '', cEmail: '', cMsg: '', cErr: '', cSent: false, checks: [], aCar: '', aUrl: '', aPrice: '', aMiles: '', aNotes: '', aErr: '', guideOpen: 0, cancelAsk: false, cancelled: false, requests: [], curReq: null, rqText: '', rqCar: '', rqArea: '', rqErr: '', rpText: '', rqBusy: false };
+  state = { ppCfg: null, jpStep: 'form', jpErr: '', jpBusy: false, me: null, ready: false, adminIn: false, adminEmail: '', adminPw: '', adminErr: '', adminBusy: false, adminFilter: 'open', adminSel: null, adReply: '', adAnswered: true, adminRequests: [], members: [], waitlist: [], ivName: '', ivEmail: '', ivErr: '', ivSent: '', ivLink: '', ivFor: '', ivBusy: false, ivCopied: false, pushState: 'unknown', pushMsg: '', backup: null, fgEmail: '', fgErr: '', fgDone: false, fgBusy: false, spToken: '', spInfo: null, spState: 'checking', spPw: '', spPw2: '', spErr: '', spBusy: false, loginBusy: false, deals: [], drafts: {}, ndTitle: '', ndSaving: '', ndPartner: '', ndCat: '', ndCode: '', ndErr: '', page: 'home', sub: '', member: null, loginEmail: '', loginPw: '', loginRemember: false, loginErr: '', joinName: '', joinEmail: '', joinPw: '', joinAgree: false, joinStep: 1, joinErr: '', wlDone: false, wlBusy: false, paying: false, justJoined: false, dealCat: 'All', dealId: null, redeemed: {}, copied: false, faqOpen: 0, cName: '', cEmail: '', cMsg: '', cErr: '', cSent: false, checks: [], aCar: '', aUrl: '', aPrice: '', aMiles: '', aNotes: '', aErr: '', guideOpen: 0, cancelAsk: false, cancelled: false, requests: [], curReq: null, rqText: '', rqCar: '', rqArea: '', rqErr: '', rpText: '', rqBusy: false };
   setters = {};
   set(k) { if (!this.setters[k]) this.setters[k] = (e) => this.setState({ [k]: e.target.value }); return this.setters[k]; }
   componentDidMount() {
@@ -1168,6 +1209,8 @@ class Component extends DCLogic {
     document.addEventListener('visibilitychange', this.onVisible);
     this.poll = setInterval(() => { if (document.visibilityState === 'visible') this.loadFor(this.state.page, true); }, 30000);
     this.loadMe().then(() => this.onHash());
+    // The Join page offers PayPal once this environment has PayPal set up, otherwise the waiting list.
+    this.api('GET', 'join/config').then(j => this.setState({ ppCfg: j.paypal ? j : null })).catch(() => {});
   }
   componentWillUnmount() { window.removeEventListener('hashchange', this.onHash); window.removeEventListener('storage', this.onStore); document.removeEventListener('visibilitychange', this.onVisible); clearInterval(this.poll); (this.timers || []).forEach(clearTimeout); }
   componentDidUpdate() {
@@ -1255,7 +1298,7 @@ class Component extends DCLogic {
     this.api('POST', 'requests/' + s.curReq + '/reply', { text: t }).then(() => this.loadFor('ask-john')).catch(() => this.setState({ rpText: t }));
   };
   afterLogin(role) { this.setState({ loginPw: '', adminPw: '', spPw: '', spPw2: '' }); return this.loadMe().then(() => this.go(role === 'admin' ? 'admin' : 'ask-john')); }
-  loginError(e) { return e.status === 429 ? 'Too many attempts. Wait 15 minutes and try again.' : e.status === 401 ? 'That email and password don’t match.' : 'That didn’t go through. Please try again.'; }
+  loginError(e) { return e.status === 403 && e.message === 'lapsed' ? 'Your membership has ended. Join again from the Join page to get back in.' : e.status === 429 ? 'Too many attempts. Wait 15 minutes and try again.' : e.status === 401 ? 'That email and password don’t match.' : 'That didn’t go through. Please try again.'; }
   onLogin = (e) => {
     e.preventDefault(); const s = this.state, em = s.loginEmail.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return this.setState({ loginErr: 'Enter the email address you joined with.' });
@@ -1349,6 +1392,59 @@ class Component extends DCLogic {
     this.setState({ checks: [{ id: Date.now(), email: s.member.email, url: s.aUrl.trim(), notes: s.aNotes.trim(), car: s.aCar.trim() || 'Car from advert link', meta, status: 'With John', note: '' }].concat(s.checks), aCar: '', aUrl: '', aPrice: '', aMiles: '', aNotes: '', aErr: '' });
   };
   post(url, body) { return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(r => r.json().catch(() => ({})).then(j => { if (!r.ok || !j.ok) throw new Error(j.error || 'failed'); return j; })); }
+  startJoin = (e) => {
+    e.preventDefault(); const s = this.state;
+    if (s.joinName.trim().length < 2) return this.setState({ jpErr: 'Enter your full name.' });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.joinEmail.trim())) return this.setState({ jpErr: 'Enter a valid email address.' });
+    if (!s.joinAgree) return this.setState({ jpErr: 'Please agree to the membership terms.' });
+    this.setState({ jpErr: '', jpBusy: true });
+    this.api('POST', 'join/start', { name: s.joinName.trim(), email: s.joinEmail.trim(), agree: true })
+      .then(j => { this.signup = { id: j.id, key: j.key }; this.setState({ jpBusy: false, jpStep: 'pay' }, () => this.showPayPal()); })
+      .catch(err => this.setState({ jpBusy: false, jpErr: err.message === 'member' ? 'There is already a member with this email address. Log in instead, or contact us.' : err.status === 429 ? 'Too many attempts. Please try again in an hour.' : 'That didn’t go through. Please try again.' }));
+  };
+  loadPayPal(clientId) {
+    if (this._pp) return this._pp;
+    this._pp = new Promise((resolve, reject) => {
+      const sc = document.createElement('script');
+      sc.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(clientId) + '&vault=true&intent=subscription&currency=GBP&components=buttons';
+      sc.onload = () => resolve(window.paypal);
+      sc.onerror = () => { this._pp = null; sc.remove(); reject(new Error('sdk')); };
+      document.head.appendChild(sc);
+    });
+    return this._pp;
+  }
+  // PayPal's own button, set to subscribe to the plan. custom_id ties the payment to this sign-up.
+  showPayPal() {
+    const s = this.state, cfg = s.ppCfg, su = this.signup, parts = s.joinName.trim().split(/\s+/);
+    this.loadPayPal(cfg.clientId).then(paypal => {
+      const el = this.ppRef.current;
+      if (!el || this.state.jpStep !== 'pay') return;
+      el.innerHTML = '';
+      return paypal.Buttons({
+        style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
+        createSubscription: (d, actions) => actions.subscription.create({
+          plan_id: cfg.planId, custom_id: su.id,
+          subscriber: { name: { given_name: parts[0], surname: parts.slice(1).join(' ') || parts[0] }, email_address: s.joinEmail.trim() },
+          application_context: { brand_name: 'Car Deal Club', shipping_preference: 'NO_SHIPPING', user_action: 'SUBSCRIBE_NOW' },
+        }),
+        onApprove: (d) => {
+          this.api('POST', 'join/approved', { id: su.id, key: su.key, sub: d.subscriptionID }).catch(() => {});
+          this.setState({ jpStep: 'wait', jpErr: '' }); this.waitForAccount(0);
+        },
+        onError: () => this.setState({ jpErr: 'PayPal couldn’t complete that. Please try again, or contact us if it keeps happening.' }),
+      }).render(el);
+    }).catch(() => this.setState({ jpErr: 'PayPal didn’t load. Check your connection and try again.' }));
+  }
+  // After paying, PayPal tells our server within seconds. Then the member goes straight to choosing a password.
+  waitForAccount(n) {
+    const su = this.signup;
+    if (n >= 40) return this.setState({ jpStep: 'slow' });
+    this.later(() => this.api('POST', 'join/status', { id: su.id, key: su.key }).then(j => {
+      if (j.state === 'active') { this.setState({ jpStep: 'form' }); this.go('set-password/' + j.token); }
+      else if (j.state === 'done') { this.setState({ jpStep: 'form' }); this.go('login'); }
+      else this.waitForAccount(n + 1);
+    }).catch(() => this.waitForAccount(n + 1)), 3000);
+  }
   joinWaitlist = (e) => {
     e.preventDefault(); const s = this.state;
     if (s.joinName.trim().length < 2) return this.setState({ joinErr: 'Enter your full name.' });
@@ -1419,8 +1515,10 @@ class Component extends DCLogic {
       spChecking: s.spState === 'checking', spBad: s.spState === 'bad', spOk: s.spState === 'ok', spErr: s.spErr, setPassword: this.setPassword, spLabel: s.spBusy ? 'Saving…' : 'Save password and log in',
       spTitle: s.spInfo && s.spInfo.kind === 'reset' ? 'Choose a new password' : 'Set your password',
       spIntro: s.spInfo ? (s.spInfo.kind === 'reset' ? 'Choose a new password for ' + s.spInfo.email + '.' : 'Hello ' + s.spInfo.name.split(' ')[0] + '. Choose a password for ' + s.spInfo.email + '. You will use it to log in from now on.') : '',
+      ppOn: !!s.ppCfg, ppOff: !s.ppCfg, jpForm: s.jpStep === 'form', jpPay: s.jpStep === 'pay', jpWait: s.jpStep === 'wait', jpSlow: s.jpStep === 'slow',
+      jpErr: s.jpErr, jpBusy: s.jpBusy, jpLabel: s.jpBusy ? 'Please wait…' : 'Continue to PayPal', startJoin: this.startJoin, ppRef: this.ppRef,
       joinStep1: s.joinStep === 1, joinStep2: s.joinStep === 2, joinErr: s.joinErr, joinAgree: s.joinAgree, joinNext: this.joinNext,
-      toggleAgree: () => this.setState({ joinAgree: !s.joinAgree }), joinBack: () => this.setState({ joinStep: 1 }),
+      toggleAgree: () => this.setState({ joinAgree: !s.joinAgree }), joinBack: () => this.setState({ joinStep: 1, jpStep: 'form', jpErr: '' }),
       step1Color: s.joinStep === 1 ? '#3fae1f' : '#9fb1c7', step2Color: s.joinStep === 2 ? '#3fae1f' : '#9fb1c7',
       payPal: this.payPal, joinWaitlist: this.joinWaitlist, wlOpen: !s.wlDone, wlDone: s.wlDone, wlBusy: s.wlBusy, wlLabel: s.wlBusy ? 'Saving…' : 'Join the waiting list', joinFirst: s.joinName.trim().split(' ')[0], paying: s.paying, payLabel: s.paying ? 'Connecting to PayPal…' : 'Pay with PayPal',
       prompts: prompts.map(t => ({ text: t, use: () => this.setState({ rqText: t, rqErr: '' }) })),
@@ -1457,7 +1555,13 @@ class Component extends DCLogic {
     const aselR = all.find(r => r.id === s.adminSel);
     const asel = aselR ? Object.assign({}, aselR, { memberName: who(aselR).name, memberEmail: who(aselR).email, statusLabel: ST2[aselR.status][0], chipBg: ST2[aselR.status][1], chipFg: ST2[aselR.status][2], isNew: aselR.status === 'sent', sub: [this.when(aselR.created), aselR.car, aselR.area].filter(Boolean).join(' · ') }) : null;
     const monthYear = ts => new Date(ts).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
-    const adminMembers = s.members.map(x => ({ name: x.name, email: x.email, joined: x.activated_at ? monthYear(x.activated_at) : 'Invited ' + new Date(x.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }), reqs: x.reqs, statusLabel: x.activated_at ? 'Active' : 'Invited', chipBg: x.activated_at ? '#eef9e9' : '#fff4d6', chipFg: x.activated_at ? '#2a7d12' : '#8a5a00' }));
+    // PayPal members show their subscription state; members John invited by hand show Active or Invited.
+    const shortDate = t => new Date(t).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    const pp = x => !x.paypal_sub ? (x.activated_at ? { label: 'Active', bg: '#eef9e9', fg: '#2a7d12' } : { label: 'Invited', bg: '#fff4d6', fg: '#8a5a00' })
+      : x.paid_until && x.paid_until < Date.now() ? { label: 'Ended', bg: '#fdecea', fg: '#b3261e' }
+      : x.paypal_status === 'CANCELLED' ? { label: 'Ends ' + shortDate(x.paid_until), bg: '#fff4d6', fg: '#8a5a00' }
+      : !x.activated_at ? { label: 'Paid, no password', bg: '#fff4d6', fg: '#8a5a00' } : { label: 'Paying', bg: '#eef9e9', fg: '#2a7d12' };
+    const adminMembers = s.members.map(x => ({ name: x.name, email: x.email, joined: x.activated_at ? monthYear(x.activated_at) : 'Invited ' + new Date(x.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }), reqs: x.reqs, statusLabel: pp(x).label, chipBg: pp(x).bg, chipFg: pp(x).fg, sub: x.paypal_sub || '' }));
     const activeCount = s.members.filter(x => x.activated_at).length, invitedCount = s.members.length - activeCount;
     const jimReply = (r, text, status) => this.api('POST', 'admin/requests/' + r.id + '/reply', { text, status }).then(() => this.loadFor('admin'));
     const PS = { unknown: ['Checking', '#e6eef8', '#0a2d55', 'Checking this device…'], unsupported: ['Not available', '#fdecea', '#b3261e', 'This browser cannot show notifications. On an iPhone, use Safari. On Android, use Chrome.'], install: ['Add to home screen first', '#fff4d6', '#8a5a00', 'Follow the iPhone steps, then open Car Deal Club from your home screen and come back to this page.'], denied: ['Blocked', '#fdecea', '#b3261e', 'Notifications are blocked for Car Deal Club. Allow them in your phone settings, then come back to this page.'], off: ['Off', '#fff4d6', '#8a5a00', 'Tap the button and allow notifications when your phone asks.'], on: ['On', '#eef9e9', '#2a7d12', 'This device gets a notification for every new request and reply.'] };
