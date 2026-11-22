@@ -27,6 +27,11 @@ migrations_dir = "migrations"
 SITE_URL = "https://www.cardealclub.co.uk"
 ADMIN_EMAIL = "james_dean1@sky.com"
 VAPID_PUBLIC = "BOjAgwHU2zumrIbmEj6D1iFslqLlVVjOskOWfnpbUe1pevt396ABXNpm9e3s-gxDvGsvQu3SoYMW4yCfRtj9MHM"
+# PayPal, switched on for the live site on 22 November 2026 (Joe's GO).
+PAYPAL_CLIENT_ID = "BAADluNVPTslhhZwYTPM9pTfmdiXc4M98VroPzO7oWgzDpy6lSEvWmEoHwFCn3ruxjDArq6jbvigpuZyp0"
+PAYPAL_PLAN_ID = "P-3KV276635L838440JNMBLJWQ"
+# Webhook registered in PayPal for https://www.cardealclub.co.uk/api/paypal/webhook
+PAYPAL_WEBHOOK_ID = "9022675952243553G"
 
 [[env.production.kv_namespaces]]
 binding = "SIGNUPS"
@@ -44,7 +49,7 @@ VAPID_PUBLIC = "BOjAgwHU2zumrIbmEj6D1iFslqLlVVjOskOWfnpbUe1pevt396ABXNpm9e3s-gxD
 # Preview only sends email to these addresses. Anyone else gets a link shown to Jim instead.
 EMAIL_ALLOW = "james_dean1@sky.com,delivered@resend.dev,delivered+admin@resend.dev"
 # PayPal (Jim's live account). Not secret: the Client ID is in the PayPal button on the page.
-# Without these the Join page shows the waiting list. Production gets them when Joe says GO.
+# Without these the Join page shows the waiting list.
 PAYPAL_CLIENT_ID = "BAADluNVPTslhhZwYTPM9pTfmdiXc4M98VroPzO7oWgzDpy6lSEvWmEoHwFCn3ruxjDArq6jbvigpuZyp0"
 PAYPAL_PLAN_ID = "P-3KV276635L838440JNMBLJWQ"
 # Webhook registered in PayPal for https://preview.car-deal-club.pages.dev/api/paypal/webhook
