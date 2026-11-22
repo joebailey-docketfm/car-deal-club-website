@@ -477,9 +477,6 @@ input::placeholder{color:#8a99ad;}
   </section>
 
   <section data-screen-label="Ownership" style="position:relative;background:#0a2d55;color:#fff;overflow:hidden;">
-    <div style="position:absolute;top:0;right:0;bottom:0;width:60%;">
-      <image-slot id="cdc-ownership-road" shape="rect" placeholder="Drop a wide road or countryside photo"></image-slot>
-    </div>
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0a2d55 0%,#0a2d55 40%,rgba(10,45,85,0.35) 75%,rgba(10,45,85,0.1) 100%);pointer-events:none;"></div>
     <div style="position:relative;max-width:1240px;margin:0 auto;padding:56px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px;pointer-events:none;">
       <div style="display:flex;gap:20px;align-items:flex-start;flex:1 1 460px;min-width:0;">
@@ -518,11 +515,7 @@ input::placeholder{color:#8a99ad;}
 
       <div style="flex:1 1 460px;min-width:0;border-radius:14px;overflow:hidden;background:#f3f6fa;border:1px solid #e3e9f0;">
         <div style="position:relative;background:#0a2d55;color:#fff;min-height:220px;">
-          <div style="position:absolute;top:0;right:0;bottom:0;width:48%;">
-            <image-slot id="cdc-winner-image" shape="rect" placeholder="Drop a giveaway photo (e.g. fuel pump)"></image-slot>
-          </div>
-          <div style="position:absolute;top:0;right:0;bottom:0;width:48%;background:linear-gradient(90deg,#0a2d55 0%,rgba(10,45,85,0) 60%);pointer-events:none;"></div>
-          <div style="position:relative;padding:26px;display:flex;flex-direction:column;gap:14px;max-width:62%;pointer-events:none;">
+          <div style="position:relative;padding:26px;display:flex;flex-direction:column;gap:14px;pointer-events:none;">
             <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" fill="#55d630"><path d="M7 3h10v3h3v2a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 14.9V18h3v3H8v-3h3v-3.1A5 5 0 0 1 8.3 12H8a4 4 0 0 1-4-4V6h3V3zm-1 5a2 2 0 0 0 1 1.7V8H6zm11 0v1.7A2 2 0 0 0 18 8h-1z"></path></svg><span>This month’s lucky recipient</span></div>
             <div style="font-size:clamp(20px,2.2vw,25px);font-weight:800;line-height:1.25;">{{ winnerHeadline }}</div>
             <div style="font-size:16px;color:#dde6f0;">{{ winnerPrize }}</div>
