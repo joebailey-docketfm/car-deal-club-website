@@ -23,6 +23,7 @@ If you have any questions, just reply to this email.
 John Bennett
 Customer Support Manager
 Car Deal Club
+salessupport@cardealclub.co.uk
 www.cardealclub.co.uk
 
 Car Deal Club Ltd. Registered in England and Wales, company number 17504431.

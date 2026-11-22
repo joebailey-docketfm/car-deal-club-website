@@ -8,7 +8,7 @@ export async function notify(env, { subject, text, replyTo }) {
       headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: env.MAIL_FROM || 'Car Deal Club website <website@cardealclub.co.uk>',
-        to: [env.MAIL_TO || 'enquiries@cardealclub.co.uk'],
+        to: [env.MAIL_TO || 'salessupport@cardealclub.co.uk'],
         reply_to: replyTo,
         subject,
         text,

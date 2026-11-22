@@ -1,5 +1,5 @@
 // POST /api/contact  { name, email, message }
-// Saves to the SIGNUPS KV namespace, and emails enquiries@ if RESEND_API_KEY is set.
+// Saves to the SIGNUPS KV namespace, and emails salessupport@ if RESEND_API_KEY is set.
 import { notify } from '../_notify.js';
 
 export async function onRequestPost({ request, env }) {

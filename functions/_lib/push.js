@@ -47,7 +47,7 @@ async function vapidAuth(env, endpoint) {
   const body = b64url(enc.encode(JSON.stringify({
     aud: new URL(endpoint).origin,
     exp: Math.floor(Date.now() / 1000) + 12 * 3600,
-    sub: 'mailto:' + (env.ADMIN_EMAIL || 'enquiries@cardealclub.co.uk'),
+    sub: 'mailto:' + (env.ADMIN_EMAIL || 'salessupport@cardealclub.co.uk'),
   })));
   const sig = await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, key, enc.encode(head + '.' + body));
   return `vapid t=${head}.${body}.${b64url(sig)}, k=${env.VAPID_PUBLIC}`;

@@ -16,7 +16,7 @@ export async function sendEmail(env, { to, subject, text }) {
       body: JSON.stringify({
         from: env.MAIL_FROM || 'Car Deal Club <website@cardealclub.co.uk>',
         to: [to],
-        reply_to: env.REPLY_TO || 'enquiries@cardealclub.co.uk',
+        reply_to: env.REPLY_TO || 'salessupport@cardealclub.co.uk',
         subject,
         text,
       }),
